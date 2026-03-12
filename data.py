@@ -33,7 +33,7 @@ class Data:
         self.golds = self.formatted_data["answers"]
         self.formatted_data = self.formatted_data.remove_columns(columns)
         
-        self.save2disk(save_path="data/chat_format", dataset=self.formatted_data)
+        #self.save2disk(save_path="data/chat_format", dataset=self.formatted_data)
         return 
     def _chat_format(self, example):
         system_message = example.get("system_message", "You are a helpful assistant.")
