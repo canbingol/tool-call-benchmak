@@ -1,15 +1,25 @@
 import json
+from argparse import ArgumentParser
 
 from model import Model
 from data import Data
 
-MODEL_ID = "canbingol/qwen2.5-3B_tool_call_1epoch"
+parser = ArgumentParser()
+
+parser.add_argument("--model_id", type=str)
+parser.add_argument("--data_size", type=int)
+
+args = parser.parse_args()
+
+MODEL_ID = args.model_id
+limit = args.data_size
+
 DATASET_ID = "Salesforce/xlam-function-calling-60k"
 
 
 model = Model(model_id=MODEL_ID)
 
-data = Data(dataset_id=DATASET_ID, tokenizer=model.tokenizer, arange=[0, 100], split="train", shuffle=True)
+data = Data(dataset_id=DATASET_ID, tokenizer=model.tokenizer, arange=[0, limit], split="train", shuffle=True)
 print(data.dataset)
 
 data.apply_chat_template_all()
