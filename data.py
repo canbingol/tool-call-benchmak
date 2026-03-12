@@ -38,7 +38,7 @@ class Data:
     def _chat_format(self, example):
         system_message = example.get("system_message", "You are a helpful assistant.")
         user_c = example.get("query")
-        assistant_c = example.get("answers")
+        assistant_c = json.loads(example.get("answers"))
         tools = json.loads(example.get("tools"))
 
         messages = [
