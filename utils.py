@@ -16,8 +16,8 @@ def write2file(golds:List, predictions:List, raw_answer:str, model_name:str, dat
         data = []
     
     d = {
-        "gold": json.loads(golds),
-        "answer": json.loads(predictions),
+        "gold": golds,
+        "answer": predictions,
         "raw_answer": raw_answer
     }
 
