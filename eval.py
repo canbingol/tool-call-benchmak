@@ -37,10 +37,11 @@ exact_match = 0.0
 for data_item, gold in zip(data.formatted_data, data.golds):
 
     model_answer = model.generate(data_item["text"])
-    tool_call = PARSER(model_answer)[0]
+    tool_call = PARSER(model_answer)
 
     if tool_call == gold:
         exact_match += 1
+    
     
 exact_match /= len(data.formatted_data)
 print(exact_match)

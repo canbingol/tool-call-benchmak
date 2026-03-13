@@ -1,9 +1,8 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from base import BaseModel
 
-class Model(BaseModel):
+class Model:
     def __init__(self, model_id):
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
