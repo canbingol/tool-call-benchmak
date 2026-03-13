@@ -33,12 +33,10 @@ class Data:
         self.golds = self.formatted_data["answers"]
         self.formatted_data = self.formatted_data.remove_columns(columns)
         
-        #self.save2disk(save_path="data/chat_format", dataset=self.formatted_data)
         return 
     def _chat_format(self, example):
         system_message = example.get("system_message", "You are a helpful assistant.")
         user_c = example.get("query")
-        assistant_c = json.loads(example.get("answers"))
         tools = json.loads(example.get("tools"))
 
         messages = [
@@ -54,10 +52,4 @@ class Data:
 
         return {"text": prompt}
     
-    def save2disk(self, save_path:str, dataset:Dataset):
-        try:
-            dataset.to_parquet(save_path)
-            return 0
-        except:
-            return 1
         

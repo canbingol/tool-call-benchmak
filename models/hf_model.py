@@ -1,7 +1,9 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-class Model:
+from base import BaseModel
+
+class Model(BaseModel):
     def __init__(self, model_id):
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
@@ -15,10 +17,8 @@ class Model:
         with torch.no_grad():
             outputs = self.model.generate(
                 **inputs,
-                max_new_tokens=100,
-                do_sample=True,
-                temperature=0.8,
-                top_p=0.9
+                max_new_tokens=512,
+                do_sample=False,
             )
             out = self.tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
         return out
