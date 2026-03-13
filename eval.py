@@ -6,7 +6,7 @@ import json
 from models.hf_model import Model
 from data import Data
 from parsers.custom_parser import spep_parser, qwen2_5_parser
-
+from utils import write2file
 
 parser = ArgumentParser()
 
@@ -39,7 +39,7 @@ exact_match = 0.0
 tool_call_accuracy = 0.0
 n_tools = 0
 
-lst = []
+model_name = MODEL_ID.split("/")[-1]
 
 for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data.formatted_data)):
 
@@ -57,16 +57,8 @@ for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data
             gold_copy.remove(t)
         n_tools += 1
 
-    d = [
-        {"gold":gold},
-        {"model_answer":tool_call},
-        {"raw_answer":model_answer}
-    ]
-    lst.append(d)
-
-file_name = f"{MODEL_ID.split("/")[-1]}_{limit}_{datetime.now().strftime('%Y%m%d')}"
-with open(file_name, "a", encoding="UTF-8") as f:
-    json.dump(lst, f, ensure_ascii=False, indent=3)
+    write2file(golds=gold, predictions=tool_call, raw_answer=model_answer,
+               model_name=model_name, data_size=limit)
 
 exact_match /= len(data.formatted_data)
 tool_call_accuracy /= n_tools
