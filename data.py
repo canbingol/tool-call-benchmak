@@ -43,8 +43,7 @@ class Data:
 
         messages = [
             {"role": "system", "content": system_message},
-            {"role": "user", "content": user_c},
-            {"role": "assistant", "content": "", "tool_calls": assistant_c},
+            {"role": "user", "content": user_c}
         ]
 
         prompt = self.tokenizer.apply_chat_template(
