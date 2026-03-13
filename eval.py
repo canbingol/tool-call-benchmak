@@ -64,7 +64,7 @@ for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data
     ]
     lst.append(d)
 
-file_name = f"{MODEL_ID}_{limit}_{datetime.now().strftime('%Y%m%d')}"
+file_name = f"{MODEL_ID.split("/")[-1]}_{limit}_{datetime.now().strftime('%Y%m%d')}"
 with open(file_name, "a", encoding="UTF-8") as f:
     json.dump(lst, f, ensure_ascii=False, indent=3)
 
