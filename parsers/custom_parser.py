@@ -21,7 +21,7 @@ def qwen2_5_parser(text: str, separators: List[str] = ["<tool_call>", "</tool_ca
     tool_jsons = []
     for p in parts:
         p = p.strip()
-
+    
         if p.endswith(end):
             tool_jsons.append(p)
 

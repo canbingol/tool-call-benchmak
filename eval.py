@@ -1,5 +1,5 @@
-import json
 from argparse import ArgumentParser
+from tqdm import tqdm
 
 from models.hf_model import Model
 from data import Data
@@ -34,14 +34,27 @@ print(data.dataset)
 data.apply_chat_template_all()
 
 exact_match = 0.0
-for data_item, gold in zip(data.formatted_data, data.golds):
+tool_call_accuracy = 0.0
+n_tools = 0
+
+for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data.formatted_data)):
 
     model_answer = model.generate(data_item["text"])
     tool_call = PARSER(model_answer)
 
     if tool_call == gold:
         exact_match += 1
-    
-    
+
+    gold_copy = gold.copy()
+
+    for t in tool_call:
+        if t in gold_copy:
+            tool_call_accuracy += 1
+            gold_copy.remove(t)
+        n_tools += 1
+
+
 exact_match /= len(data.formatted_data)
-print(exact_match)
+tool_call_accuracy /= n_tools
+
+print(f"exact match: {exact_match}\ntool call accuracy: {tool_call_accuracy}")
