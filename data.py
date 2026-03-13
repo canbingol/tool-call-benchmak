@@ -30,7 +30,11 @@ class Data:
     def apply_chat_template_all(self):
         columns = self.dataset.column_names
         self.formatted_data = self.dataset.map(self._chat_format)
-        self.golds = self.formatted_data["answers"]
+        
+        self.golds = self.golds = [
+            json.loads(a) if isinstance(a, str) else a
+            for a in self.formatted_data["answers"]
+        ]
         self.formatted_data = self.formatted_data.remove_columns(columns)
         
         return 
