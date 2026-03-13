@@ -1,5 +1,7 @@
 from argparse import ArgumentParser
 from tqdm import tqdm
+from datetime import datetime
+import json
 
 from models.hf_model import Model
 from data import Data
@@ -37,6 +39,8 @@ exact_match = 0.0
 tool_call_accuracy = 0.0
 n_tools = 0
 
+lst = []
+
 for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data.formatted_data)):
 
     model_answer = model.generate(data_item["text"])
@@ -53,6 +57,16 @@ for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data
             gold_copy.remove(t)
         n_tools += 1
 
+    d = [
+        {"gold":gold},
+        {"model_answer":tool_call},
+        {"raw_answer":model_answer}
+    ]
+    lst.append(d)
+
+file_name = f"{MODEL_ID}_{limit}_{datetime.now().strftime('%Y%m%d')}"
+with open(file_name, "a", encoding="UTF-8") as f:
+    json.dump(lst, f, ensure_ascii=False, indent=3)
 
 exact_match /= len(data.formatted_data)
 tool_call_accuracy /= n_tools
