@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 def write2file(golds:List, predictions:List, raw_answer:str, model_name:str, data_size:int):
-    file_name = f"{model_name}_{data_size}_{datetime.now().strftime('%Y%m%d')}"
+    file_name = f"{model_name}_{data_size}_{datetime.now().strftime('%Y%m%d')}.json"
     data = []
 
     try:
