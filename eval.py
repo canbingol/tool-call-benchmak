@@ -25,7 +25,7 @@ limit = args.data_size
 pars = args.parser
 
 PARSER = spep_parser if pars == "spep" else qwen2_5_parser
-DATASET_ID = "Salesforce/xlam-function-calling-60k"
+DATASET_ID = "./eval_data/simple_tool_call.json"
 
 
 model = Model(model_id=MODEL_ID)
