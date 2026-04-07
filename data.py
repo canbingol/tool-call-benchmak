@@ -59,9 +59,15 @@ class Data:
             return None
 
         if isinstance(answers_raw, str):
-            return json.loads(answers_raw)
+            parsed = json.loads(answers_raw)
+        else:
+            parsed = answers_raw
 
-        return answers_raw
+        # Extract tool_calls if it's a dict with tool_calls key
+        if isinstance(parsed, dict) and "tool_calls" in parsed:
+            return parsed["tool_calls"]
+
+        return parsed
 
     def apply_chat_template_all(self):
         original_columns = self.dataset.column_names
