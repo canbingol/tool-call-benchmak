@@ -67,7 +67,7 @@ class Data:
         original_columns = self.dataset.column_names
 
         self.golds = [
-            self._parse_answers(example.get("answers"))
+            self._parse_answers(example.get("answer"))
             for example in self.dataset
         ]
 
