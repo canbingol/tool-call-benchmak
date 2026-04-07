@@ -52,9 +52,11 @@ for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data
     gold_copy = gold.copy()
 
     for t in tool_call:
-        if t in gold_copy:
-            tool_call_accuracy += 1
-            gold_copy.remove(t)
+        for g in gold_copy:
+            if t == g:
+                tool_call_accuracy += 1
+                gold_copy.remove(g)
+                break
         n_tools += 1
 
     write2file(golds=gold, predictions=tool_call, raw_answer=model_answer,
