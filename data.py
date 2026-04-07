@@ -9,11 +9,14 @@ class Data:
                  ,arange:Optional[List[int]], split:str="eval", shuffle:bool=True, seed:int=42):
         
         self.tokenizer = tokenizer
-        dataset = load_dataset(dataset_id, split=split)
+        if ".json" in dataset_id:
+            dataset = Dataset.from_json(dataset_id, split=split)
+        else:
+            dataset = load_dataset(dataset_id, split=split)
         if shuffle:
             dataset.shuffle(seed=seed)
 
-        if arange:
+        if arange and arange[1] != -1:
             dataset = dataset.select(range(arange[0], arange[1]))
 
 

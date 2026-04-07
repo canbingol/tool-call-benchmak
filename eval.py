@@ -11,7 +11,7 @@ from utils import write2file
 parser = ArgumentParser()
 
 parser.add_argument("--model_id", type=str)
-parser.add_argument("--data_size", type=int)
+parser.add_argument("--data_size", type=int, default=-1)
 parser.add_argument(
     "--parser",
     type=str,
