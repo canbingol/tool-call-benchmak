@@ -63,6 +63,9 @@ for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data
                model_name=model_name, data_size=limit)
 
 exact_match /= len(data.formatted_data)
-tool_call_accuracy /= n_tools
+if n_tools > 0:
+    tool_call_accuracy /= n_tools
+else:
+    tool_call_accuracy = 0.0
 
 print(f"exact match: {exact_match}\ntool call accuracy: {tool_call_accuracy}")
