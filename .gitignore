@@ -1,4 +1,7 @@
 data/
+results/
+.hf_cache/
+.DS_Store
 
 __pycache__/
 *.py[cod]

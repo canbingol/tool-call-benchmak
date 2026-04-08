@@ -13,7 +13,6 @@ def spep_parser(input:str, seperator:str="spep"):
 
     return tool_jsons
 
-
 def qwen2_5_parser(text: str, separators: List[str] = ["<tool_call>", "</tool_call>"]):
 
     start, end = separators

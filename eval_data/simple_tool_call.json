@@ -97,17 +97,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_alarm",
-          "arguments": {
-            "time": "07:30",
-            "date": "2026-04-08"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_alarm\", \"arguments\": {\"time\": \"07:30\", \"date\": \"2026-04-08\"}}]}"
   },
   {
     "query": "Perşembe günü Ankara'da dışarıda yürüyüş yapmayı planlıyorum, acaba yağmur yağar mı diye bir baksak?",
@@ -207,17 +197,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "get_weather",
-          "arguments": {
-            "location": "Ankara",
-            "date": "2026-04-09"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Ankara\", \"date\": \"2026-04-09\"}}]}"
   },
   {
     "query": "Önümüzdeki cuma akşamı saat 19:30 için Şişli civarında, 3 kişilik güzel bir sushi mekanı arıyorum, yardımcı olabilir misiniz?",
@@ -317,22 +297,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_restaurant",
-          "arguments": {
-            "location": "Şişli",
-            "cuisine": "sushi",
-            "time": "19:30",
-            "people": 3
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_restaurant\", \"arguments\": {\"location\": \"Şişli\", \"cuisine\": \"sushi\", \"time\": \"19:30\", \"people\": 3}}]}"
   },
   {
-    "query": "Ya patrona acil bir durum çıktığını ve bugün ofise gelemeyeceğimi çabucak iletiver.",
+    "query": "'Patron' adlı alıcıya 'Acil bir durum çıktı, bugün ofise gelemeyeceğim.' şeklinde mesaj iletiver.",
     "tools": [
       {
         "name": "set_alarm",
@@ -429,17 +397,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "send_message",
-          "arguments": {
-            "name": "Patron",
-            "content": "Acil bir durum çıktı, bugün ofise gelemeyeceğim."
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"send_message\", \"arguments\": {\"name\": \"Patron\", \"content\": \"Acil bir durum çıktı, bugün ofise gelemeyeceğim.\"}}]}"
   },
   {
     "query": "Bugün öğleden sonra tam 3'te fırını kapatmam gerekiyor, o saat gelince ötecek bir şey ayarlar mısın?",
@@ -539,20 +497,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_alarm",
-          "arguments": {
-            "time": "15:00",
-            "date": "2026-04-07"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_alarm\", \"arguments\": {\"time\": \"15:00\", \"date\": \"2026-04-07\"}}]}"
   },
   {
-    "query": "Canım eşim'e sütten başka bir şeye ihtiyacı olup olmadığını sor.",
+    "query": "'Canım eşim' kişisine 'Sütten başka bir şeye ihtiyacın var mı?' diye mesaj at.",
     "tools": [
       {
         "name": "send_message",
@@ -649,17 +597,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "send_message",
-          "arguments": {
-            "name": "Canım eşim",
-            "content": "Sütten başka bir şeye ihtiyacın var mı?"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"send_message\", \"arguments\": {\"name\": \"Canım eşim\", \"content\": \"Sütten başka bir şeye ihtiyacın var mı?\"}}]}"
   },
   {
     "query": "Yarın akşam Kadıköy tarafında saat sekiz gibi 4 kişi için bir et restoranı arıyorum, bulabilir misin?",
@@ -759,19 +697,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_restaurant",
-          "arguments": {
-            "location": "Kadıköy",
-            "cuisine": "et",
-            "time": "20:00",
-            "people": 4
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_restaurant\", \"arguments\": {\"location\": \"Kadıköy\", \"cuisine\": \"et\", \"time\": \"20:00\", \"people\": 4}}]}"
   },
   {
     "query": "Hafta sonu Pazar günü Uludağ'da kayak yapmaya gideceğiz, kar durumu veya hava şartları uygun mu acaba?",
@@ -871,17 +797,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "get_weather",
-          "arguments": {
-            "location": "Uludağ",
-            "date": "2026-04-12"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Uludağ\", \"date\": \"2026-04-12\"}}]}"
   },
   {
     "query": "Lütfen ayın 12'si sabah altı çeyreğe alarm planlayabilir misin, erken kalkmam şart.",
@@ -981,20 +897,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_alarm",
-          "arguments": {
-            "time": "06:15",
-            "date": "2026-04-12"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_alarm\", \"arguments\": {\"time\": \"06:15\", \"date\": \"2026-04-12\"}}]}"
   },
   {
-    "query": "Ahmet Bey'e sabahki toplantıya on dakika gecikeceğimi yazar mısın?",
+    "query": "'Ahmet Bey' adlı alıcıya 'Toplantıya 10 dakika gecikeceğim.' mesajını yazar mısın?",
     "tools": [
       {
         "name": "send_message",
@@ -1091,17 +997,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "send_message",
-          "arguments": {
-            "name": "Ahmet Bey",
-            "content": "Toplantıya 10 dakika gecikeceğim."
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"send_message\", \"arguments\": {\"name\": \"Ahmet Bey\", \"content\": \"Toplantıya 10 dakika gecikeceğim.\"}}]}"
   },
   {
     "query": "Yarın sabahki uçuşuma geç kalmamak için beni 5'te kaldıracak bir şeyler yap.",
@@ -1201,17 +1097,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_alarm",
-          "arguments": {
-            "time": "05:00",
-            "date": "2026-04-08"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_alarm\", \"arguments\": {\"time\": \"05:00\", \"date\": \"2026-04-08\"}}]}"
   },
   {
     "query": "15 Nisan'da Rize'nin hava durumunu kontrol edebilir misin?",
@@ -1311,17 +1197,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "get_weather",
-          "arguments": {
-            "location": "Rize",
-            "date": "2026-04-15"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Rize\", \"date\": \"2026-04-15\"}}]}"
   },
   {
     "query": "Kız arkadaşımla yıldönümümüzü kutlamak için bu Cuma akşamı 21:00'de Nişantaşı civarında iki kişilik şık bir Fransız restoranı rezerve edilecek bir yer var mı bakalım.",
@@ -1421,22 +1297,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_restaurant",
-          "arguments": {
-            "location": "Nişantaşı",
-            "cuisine": "Fransız",
-            "time": "21:00",
-            "people": 2
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_restaurant\", \"arguments\": {\"location\": \"Nişantaşı\", \"cuisine\": \"Fransız\", \"time\": \"21:00\", \"people\": 2}}]}"
   },
   {
-    "query": "Can'a akşamki halı saha maçına gelip gelmeyeceğini soran kısa bir mesaj gönderir misin?",
+    "query": "'Can' kişisine 'Akşamki maça halı sahaya gelecek misin?' şeklinde kısa bir mesaj gönderir misin?",
     "tools": [
       {
         "name": "get_weather",
@@ -1533,20 +1397,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "send_message",
-          "arguments": {
-            "name": "Can",
-            "content": "Akşamki maça halı sahaya gelecek misin?"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"send_message\", \"arguments\": {\"name\": \"Can\", \"content\": \"Akşamki maça halı sahaya gelecek misin?\"}}]}"
   },
   {
-    "query": "Bugün fırındaki kekin pişmesi için öğleden sonra 16:20'ye bana bir uyarı kursana.",
+    "query": "Parkmetreyi 2 saatliğine attım ama süresi tam 16:20'de doluyor, ceza yememek için bana hatırlatır mısın?",
     "tools": [
       {
         "name": "search_restaurant",
@@ -1643,17 +1497,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_alarm",
-          "arguments": {
-            "time": "16:20",
-            "date": "2026-04-07"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_alarm\", \"arguments\": {\"time\": \"16:20\", \"date\": \"2026-04-07\"}}]}"
   },
   {
     "query": "Ula yarın trabzonda hava nası olcak bi bakaym de.",
@@ -1753,17 +1597,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "get_weather",
-          "arguments": {
-            "location": "Trabzon",
-            "date": "2026-04-08"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Trabzon\", \"date\": \"2026-04-08\"}}]}"
   },
   {
     "query": "Gece yarısına tam on dakika kala alarm çalmasını istiyorum, sabaha karşı yetiştirmem gereken bir şey var.",
@@ -1863,20 +1697,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_alarm",
-          "arguments": {
-            "time": "23:50",
-            "date": "2026-04-07"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_alarm\", \"arguments\": {\"time\": \"23:50\", \"date\": \"2026-04-07\"}}]}"
   },
   {
-    "query": "Yönetim kuruluna acilen 2. Çeyrek bütçe raporunun revize edildiğine dair bir bilgilendirme metni geçer misin?",
+    "query": "'Yönetim kurulu' alıcısına '2. Çeyrek bütçe raporu revize edilmiştir.' metnini geçer misin?",
     "tools": [
       {
         "name": "send_message",
@@ -1973,17 +1797,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "send_message",
-          "arguments": {
-            "name": "Yönetim kurulu",
-            "content": "2. Çeyrek bütçe raporu revize edilmiştir."
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"send_message\", \"arguments\": {\"name\": \"Yönetim kurulu\", \"content\": \"2. Çeyrek bütçe raporu revize edilmiştir.\"}}]}"
   },
   {
     "query": "Önümüzdeki Salı öğlen 1 civarı Levent'te 4 kişilik ofis yemeğine uygun nezih bir balıkçı ayarlayabilir miyim diye bi taratsana sana zahmet.",
@@ -2083,19 +1897,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_restaurant",
-          "arguments": {
-            "location": "Levent",
-            "cuisine": "balık",
-            "time": "13:00",
-            "people": 4
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_restaurant\", \"arguments\": {\"location\": \"Levent\", \"cuisine\": \"balık\", \"time\": \"13:00\", \"people\": 4}}]}"
   },
   {
     "query": "Haftaya çarşamba günü Antalya'da açık hava düğün organizasyonumuz var, tente falan ayarlamak şart olur mu sence, durumlar ne?",
@@ -2195,17 +1997,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "get_weather",
-          "arguments": {
-            "location": "Antalya",
-            "date": "2026-04-15"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Antalya\", \"date\": \"2026-04-15\"}}]}"
   },
   {
     "query": "Kanka Taksim'de hamburger gömebileceğimiz 3 kişilik mekan var mı akşam yedide?",
@@ -2305,19 +2097,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_restaurant",
-          "arguments": {
-            "location": "Taksim",
-            "cuisine": "hamburger",
-            "time": "19:00",
-            "people": 3
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_restaurant\", \"arguments\": {\"location\": \"Taksim\", \"cuisine\": \"hamburger\", \"time\": \"19:00\", \"people\": 3}}]}"
   },
   {
     "query": "Cuma sabah Karşıyaka sahilde koşuya çıkmayı planlıyorum, rüzgarlık falan gerekir mi sence çok mu soğuk?",
@@ -2417,20 +2197,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "get_weather",
-          "arguments": {
-            "location": "Karşıyaka",
-            "date": "2026-04-10"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Karşıyaka\", \"date\": \"2026-04-10\"}}]}"
   },
   {
-    "query": "Ya kurye geldi de adresi tam bulamamış, güvenliğe hemen 'kargoyu teslim alıyorum kapıya inin' diye yazsana.",
+    "query": "Ya kurye geldi de adresi tam bulamamış, 'Güvenlik' isimli alıcıya hemen 'Kargoyu teslim alıyorum kapıya inin' diye mesaj gönder.",
     "tools": [
       {
         "name": "send_message",
@@ -2527,17 +2297,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "send_message",
-          "arguments": {
-            "name": "Güvenlik",
-            "content": "Kargoyu teslim alıyorum kapıya inin"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"send_message\", \"arguments\": {\"name\": \"Güvenlik\", \"content\": \"Kargoyu teslim alıyorum kapıya inin\"}}]}"
   },
   {
     "query": "Yarın sabah ilk iş uçak biletini iptal etmem lazım, mesai 9'da başlıyor beni tam yarım saat öncesinde uyandırır mısın?",
@@ -2637,17 +2397,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_alarm",
-          "arguments": {
-            "time": "08:30",
-            "date": "2026-04-08"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_alarm\", \"arguments\": {\"time\": \"08:30\", \"date\": \"2026-04-08\"}}]}"
   },
   {
     "query": "Yurt dışından gelen misafirlerimizi ağırlamak maksadıyla bu akşam 20:30 için Boğaz hattında 6 kişilik iyi bir kebapçı araştırır mısın?",
@@ -2747,22 +2497,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_restaurant",
-          "arguments": {
-            "location": "Boğaz",
-            "cuisine": "kebap",
-            "time": "20:30",
-            "people": 6
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_restaurant\", \"arguments\": {\"location\": \"Boğaz\", \"cuisine\": \"kebap\", \"time\": \"20:30\", \"people\": 6}}]}"
   },
   {
-    "query": "Veteriner kliniğine Pamuk'un sabahki antibiyotiğini kustuğunu ve alternatif olarak ne yapmamız gerektiğini soran bir mesaj ulaştır.",
+    "query": "'Veteriner kliniği' adlı alıcıya 'Pamuk sabahki antibiyotiğini kustu, alternatif olarak ne yapmalıyız?' mesajını ulaştır.",
     "tools": [
       {
         "name": "search_restaurant",
@@ -2859,17 +2597,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "send_message",
-          "arguments": {
-            "name": "Veteriner kliniği",
-            "content": "Pamuk sabahki antibiyotiğini kustu, alternatif olarak ne yapmalıyız?"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"send_message\", \"arguments\": {\"name\": \"Veteriner kliniği\", \"content\": \"Pamuk sabahki antibiyotiğini kustu, alternatif olarak ne yapmalıyız?\"}}]}"
   },
   {
     "query": "Yarın öğleden sonra tam 14:00'te tek başıma kitabımı okuyup kafa dinleyebileceğim, Kadıköy Moda sahilinde bir vegan kafe araması yapar mısın?",
@@ -2969,19 +2697,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_restaurant",
-          "arguments": {
-            "location": "Moda",
-            "cuisine": "vegan",
-            "time": "14:00",
-            "people": 1
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_restaurant\", \"arguments\": {\"location\": \"Moda\", \"cuisine\": \"vegan\", \"time\": \"14:00\", \"people\": 1}}]}"
   },
   {
     "query": "Perseid meteor yağmuru için Salda Gölü'ne teleskopla kampa gideceğiz 12 Ağustos'ta, gökyüzünün görülme açısı için bulutluluk durumuna bir bakar mısın?",
@@ -3081,17 +2797,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "get_weather",
-          "arguments": {
-            "location": "Salda Gölü",
-            "date": "2026-08-12"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"get_weather\", \"arguments\": {\"location\": \"Salda Gölü\", \"date\": \"2026-08-12\"}}]}"
   },
   {
     "query": "Amerikan borsaları açılır açılmaz teknoloji hisselerini elden çıkarmam lazım, saat tam 16:30'da telefonun zilini devreye sokar mısın?",
@@ -3191,20 +2897,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_alarm",
-          "arguments": {
-            "time": "16:30",
-            "date": "2026-04-07"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_alarm\", \"arguments\": {\"time\": \"16:30\", \"date\": \"2026-04-07\"}}]}"
   },
   {
-    "query": "Bizim klanın Discord grubuna, akşama raid için healer eksiğimiz olduğunu ve oynamak isteyenlerin haber vermesi gerektiğini yazar mısın?",
+    "query": "'Discord grubu' isimli kişi veya gruba 'Akşama raid için healer eksiğimiz var, oynamak isteyen haber versin' mesajını yazar mısın?",
     "tools": [
       {
         "name": "send_message",
@@ -3301,20 +2997,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "send_message",
-          "arguments": {
-            "name": "Discord grubu",
-            "content": "Akşama raid için healer eksiğimiz var, oynamak isteyen haber versin"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"send_message\", \"arguments\": {\"name\": \"Discord grubu\", \"content\": \"Akşama raid için healer eksiğimiz var, oynamak isteyen haber versin\"}}]}"
   },
   {
-    "query": "Prod veritabanındaki CPU kullanımı %90'ı geçmiş, hemen us-east-1 bölgesinde read-replica sayısını 3'e çıkar acilen.",
+    "query": "Prod sisteminde CPU kullanımı %90'ı geçmiş, us-east-1 bölgesindeki 'database' kaynağı için 'scale_out' aksiyonunu alarak read-replica sayısını 3'e çıkar.",
     "tools": [
       {
         "name": "scale_infrastructure",
@@ -3410,22 +3096,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "scale_infrastructure",
-          "arguments": {
-            "resource_type": "database",
-            "region": "us-east-1",
-            "action": "scale_out",
-            "target_count": 3
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"scale_infrastructure\", \"arguments\": {\"resource_type\": \"database\", \"region\": \"us-east-1\", \"action\": \"scale_out\", \"target_count\": 3}}]}"
   },
   {
-    "query": "Müşterinin TR-847291 numaralı siparişinde yer alan mavi kazak defolu çıkmış, o yüzden sadece o ürün için hızlıca iade kargo kodu oluştur.",
+    "query": "Müşterinin TR-847291 numaralı siparişinde yer alan 'mavi kazak' ürünü defolu ('defective') çıkmış, o ürün için hızlıca iade kaydı oluştur.",
     "tools": [
       {
         "name": "issue_refund",
@@ -3517,21 +3191,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "generate_return_label",
-          "arguments": {
-            "order_id": "TR-847291",
-            "item_name": "mavi kazak",
-            "reason": "defective"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"generate_return_label\", \"arguments\": {\"order_id\": \"TR-847291\", \"item_name\": \"mavi kazak\", \"reason\": \"defective\"}}]}"
   },
   {
-    "query": "Kredi kartımdan Amazon'da çekilen 1500 TL'lik işlemi ben yapmadım, bu işleme hemen şüpheli harcama itirazı kaydı açar mısın?",
+    "query": "'credit_card' hesabımdan Amazon'da çekilen 1500 TL'lik işlemi ben yapmadım, bu işleme hemen 'unauthorized' sebebiyle şüpheli harcama itirazı kaydı açar mısın?",
     "tools": [
       {
         "name": "freeze_card",
@@ -3632,22 +3295,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "dispute_transaction",
-          "arguments": {
-            "account_type": "credit_card",
-            "merchant": "Amazon",
-            "amount": 1500,
-            "reason": "unauthorized"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"dispute_transaction\", \"arguments\": {\"account_type\": \"credit_card\", \"merchant\": \"Amazon\", \"amount\": 1500, \"reason\": \"unauthorized\"}}]}"
   },
   {
-    "query": "Salon biraz fazla aydınlık oldu, oradaki lambaların parlaklığını yüzde kırk seviyesine kıs ve rengini de sıcak beyaza çevir.",
+    "query": "salon biraz fazla aydınlık oldu, lambaların parlaklığını yüzde 40 seviyesine kıs ve rengini de 'warm_white' şekline çevir.",
     "tools": [
       {
         "name": "set_thermostat",
@@ -3734,18 +3385,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "adjust_smart_lighting",
-          "arguments": {
-            "room": "salon",
-            "brightness": 40,
-            "color_temperature": "warm_white"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"adjust_smart_lighting\", \"arguments\": {\"room\": \"salon\", \"brightness\": 40, \"color_temperature\": \"warm_white\"}}]}"
   },
   {
     "query": "Üniversite kütüphanesinden aldığım 'Sefiller' kitabının iade süresini bir hafta daha uzatabilir miyiz, henüz bitiremedim.",
@@ -3834,17 +3474,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "renew_library_book",
-          "arguments": {
-            "book_title": "Sefiller",
-            "extension_days": 7
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"renew_library_book\", \"arguments\": {\"book_title\": \"Sefiller\", \"extension_days\": 7}}]}"
   },
   {
     "query": "Arabanın 10 bin bakımı geldi, önümüzdeki cumartesi sabah 10 için Maslak sanayideki özel servisten bir randevu oluşturur musun?",
@@ -3939,22 +3569,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "book_auto_service",
-          "arguments": {
-            "service_type": "10 bin bakımı",
-            "date": "2026-04-11",
-            "time": "10:00",
-            "location_query": "Maslak sanayi"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"book_auto_service\", \"arguments\": {\"service_type\": \"10 bin bakımı\", \"date\": \"2026-04-11\", \"time\": \"10:00\", \"location_query\": \"Maslak sanayi\"}}]}"
   },
   {
-    "query": "Bayram tatili için Cuma akşamı Harem'den Ankara'ya giden en ucuz otobüs biletlerini listeler misin?",
+    "query": "Bayram tatili için Cuma akşamı Harem'den Ankara'ya giden otobüs biletlerini 'price_asc' olarak listeler misin?",
     "tools": [
       {
         "name": "rent_car",
@@ -4050,22 +3668,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_bus_tickets",
-          "arguments": {
-            "departure": "Harem",
-            "destination": "Ankara",
-            "date": "2026-04-10",
-            "sort_by": "price_asc"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_bus_tickets\", \"arguments\": {\"departure\": \"Harem\", \"destination\": \"Ankara\", \"date\": \"2026-04-10\", \"sort_by\": \"price_asc\"}}]}"
   },
   {
-    "query": "Bugün yediğim 1.5 porsiyon İskender kebabı öğle yemeği kategorisinde beslenme günlüğüme kaydet.",
+    "query": "Bugün yediğim 1.5 porsiyon 'İskender kebap' öğününü 'lunch' olarak beslenme günlüğüme kaydet.",
     "tools": [
       {
         "name": "log_food_intake",
@@ -4151,21 +3757,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "log_food_intake",
-          "arguments": {
-            "food_item": "İskender kebap",
-            "portion_size": 1.5,
-            "meal_type": "lunch"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"log_food_intake\", \"arguments\": {\"food_item\": \"İskender kebap\", \"portion_size\": 1.5, \"meal_type\": \"lunch\"}}]}"
   },
   {
-    "query": "Siparişimde fazladan sossuz patates istemiştim ama hepsi soslu gelmiş, yanlış ürün iddiasıyla hemen restoran destek talebi aç.",
+    "query": "Siparişimde fazladan sossuz patates istemiştim ama hepsi soslu gelmiş, 'wrong_item' şikayetiyle 'patates soslu gelmiş' açıklamasını yazarak hemen 'support_ticket' oluştur.",
     "tools": [
       {
         "name": "track_delivery",
@@ -4246,21 +3841,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "report_order_issue",
-          "arguments": {
-            "issue_type": "wrong_item",
-            "item_details": "patates soslu gelmiş",
-            "resolution_request": "support_ticket"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"report_order_issue\", \"arguments\": {\"issue_type\": \"wrong_item\", \"item_details\": \"patates soslu gelmiş\", \"resolution_request\": \"support_ticket\"}}]}"
   },
   {
-    "query": "Bu hafta sonu Zorlu PSM'de sahnelenecek olan Fazıl Say konserinin balkon kısmındaki en ön sıradan iki adet tam bilet satın al.",
+    "query": "Bu hafta sonu Zorlu PSM'de sahnelenecek olan Fazıl Say konseri için 'balkon en ön sıra' kısmından 2 adet tam bilet satın al.",
     "tools": [
       {
         "name": "view_event_calendar",
@@ -4359,23 +3943,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "purchase_event_ticket",
-          "arguments": {
-            "event_name": "Fazıl Say konseri",
-            "venue": "Zorlu PSM",
-            "ticket_count": 2,
-            "seat_category": "balkon en ön sıra",
-            "ticket_type": "tam"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"purchase_event_ticket\", \"arguments\": {\"event_name\": \"Fazıl Say konseri\", \"venue\": \"Zorlu PSM\", \"ticket_count\": 2, \"seat_category\": \"balkon en ön sıra\", \"ticket_type\": \"tam\"}}]}"
   },
   {
-    "query": "Kadıköy bölgesinde, 3 milyon ile 5 milyon lira bandında yer alan 3+1 kiralık değil satılık deniz manzaralı daire ilanlarını benim için tarar mısın?",
+    "query": "Kadıköy bölgesinde, 3 milyon ile 5 milyon lira bandında yer alan 3+1 'for_sale' özellikli ve 'deniz manzaralı' daire ilanlarını benim için tarar mısın?",
     "tools": [
       {
         "name": "calculate_mortgage",
@@ -4489,23 +4060,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_real_estate",
-          "arguments": {
-            "location": "Kadıköy",
-            "min_price": 3000000,
-            "max_price": 5000000,
-            "room_type": "3+1",
-            "property_status": "for_sale",
-            "features": [
-              "deniz manzaralı"
-            ]
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_real_estate\", \"arguments\": {\"location\": \"Kadıköy\", \"min_price\": 3000000, \"max_price\": 5000000, \"room_type\": \"3+1\", \"property_status\": \"for_sale\", \"features\": [\"deniz manzaralı\"]}}]}"
   },
   {
     "query": "Motorumu acilen satacağım için Şişli bölgesindeki bana en yakın ve şu an gerçekten açık olan nöbetçi noterlerin bilgisini çıkarır mısın?",
@@ -4593,21 +4148,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "find_public_notary",
-          "arguments": {
-            "district": "Şişli",
-            "is_on_duty": true,
-            "currently_open": true
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"find_public_notary\", \"arguments\": {\"district\": \"Şişli\", \"is_on_duty\": true, \"currently_open\": true}}]}"
   },
   {
-    "query": "Sakatlandığım için MacFit üyeliğimi önümüzdeki aydan itibaren başlatarak 3 ay boyunca sağlık sebebi şerhiyle tamamen dondurmanızı talep ediyorum.",
+    "query": "Sakatlandığım için MacFit üyeliğimi önümüzdeki aydan itibaren başlatarak 3 ay boyunca 'medical' gerekçesiyle dondurmanızı talep ediyorum.",
     "tools": [
       {
         "name": "book_personal_trainer",
@@ -4688,18 +4232,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "pause_gym_membership",
-          "arguments": {
-            "duration_months": 3,
-            "start_from_next_month": true,
-            "reason": "medical"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"pause_gym_membership\", \"arguments\": {\"duration_months\": 3, \"start_from_next_month\": true, \"reason\": \"medical\"}}]}"
   },
   {
     "query": "Evimden alınıp İzmir'e gönderilmek üzere 15 desilik standart bir koli için Aras veya Yurtiçi kargodan eve kurye çağırma talebi oluşturur musun?",
@@ -4791,24 +4324,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "schedule_courier_pickup",
-          "arguments": {
-            "destination_city": "İzmir",
-            "package_size_desi": 15,
-            "preferred_carriers": [
-              "Aras",
-              "Yurtiçi"
-            ]
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"schedule_courier_pickup\", \"arguments\": {\"destination_city\": \"İzmir\", \"package_size_desi\": 15, \"preferred_carriers\": [\"Aras\", \"Yurtiçi\"]}}]}"
   },
   {
-    "query": "İnsan kaynakları sistemine girip, önümüzdeki hafta pazartesinden başlayarak 5 günlük yıllık izin talebi oluşturur musun, onaycı olarak da yöneticimi seç lütfen.",
+    "query": "İnsan kaynakları sistemine girip, önümüzdeki hafta pazartesinden başlayarak 5 günlük 'annual' rapor tipiyle izin talebi oluşturur musun, onaycı olarak da 'manager' seç lütfen.",
     "tools": [
       {
         "name": "check_leave_balance",
@@ -4900,19 +4419,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "submit_leave_request",
-          "arguments": {
-            "leave_type": "annual",
-            "start_date": "2026-04-13",
-            "duration_days": 5,
-            "approver": "manager"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"submit_leave_request\", \"arguments\": {\"leave_type\": \"annual\", \"start_date\": \"2026-04-13\", \"duration_days\": 5, \"approver\": \"manager\"}}]}"
   },
   {
     "query": "Golden cinsi köpeğim fena tüy döküyor, bu cumartesi Pet Kuaförü için yıkama ve makine tıraşı randevusu ayarlasana.",
@@ -4995,21 +4502,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "schedule_pet_grooming",
-          "arguments": {
-            "pet_breed": "Golden",
-            "service_type": [
-              "yıkama",
-              "makine tıraşı"
-            ],
-            "date": "2026-04-11"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"schedule_pet_grooming\", \"arguments\": {\"pet_breed\": \"Golden\", \"service_type\": [\"yıkama\", \"makine tıraşı\"], \"date\": \"2026-04-11\"}}]}"
   },
   {
     "query": "Kadıköy'deki sanat atölyesinde yetişkinler için akşam saatlerinde sıfırdan piyano kursu arıyorum.",
@@ -5094,20 +4587,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "find_music_classes",
-          "arguments": {
-            "location": "Kadıköy",
-            "instrument": "piyano",
-            "skill_level": "beginner",
-            "time_preference": "akşam",
-            "age_group": "yetişkinler"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"find_music_classes\", \"arguments\": {\"location\": \"Kadıköy\", \"instrument\": \"piyano\", \"skill_level\": \"beginner\", \"time_preference\": \"akşam\", \"age_group\": \"yetişkinler\"}}]}"
   },
   {
     "query": "Bu cuma akşamı dışarı çıkacağız, referanslı ve evcil hayvanla arası iyi olan bir çocuk bakıcısı bulabilir misin 4 saatliğine?",
@@ -5184,19 +4664,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "find_babysitter",
-          "arguments": {
-            "date": "2026-04-10",
-            "duration_hours": 4,
-            "requires_pet_friendly": true,
-            "requires_references": true
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"find_babysitter\", \"arguments\": {\"date\": \"2026-04-10\", \"duration_hours\": 4, \"requires_pet_friendly\": true, \"requires_references\": true}}]}"
   },
   {
     "query": "Bayram temizliği şart oldu, 3+1 evim için önümüzdeki salı sabahı dip köşe temizlik yapacak iki kişilik bir temizlik ekibi organize eder misin?",
@@ -5280,23 +4748,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "book_cleaning_service",
-          "arguments": {
-            "house_type": "3+1",
-            "date": "2026-04-14",
-            "time_preference": "sabah",
-            "personnel_count": 2,
-            "cleaning_type": "dip köşe temizlik"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"book_cleaning_service\", \"arguments\": {\"house_type\": \"3+1\", \"date\": \"2026-04-14\", \"time_preference\": \"sabah\", \"personnel_count\": 2, \"cleaning_type\": \"dip köşe temizlik\"}}]}"
   },
   {
-    "query": "Çok acil saçımı boyatmam lazım, Beşiktaş çevresindeki bir kuaförden bu öğleden sonra saat 2 için randevu alır mısın?",
+    "query": "Çok acil 'saç boyama' işlemi yaptırmam lazım, Beşiktaş çevresindeki bir kuaförden bu öğleden sonra saat 14:00 için randevu alır mısın?",
     "tools": [
       {
         "name": "book_salon_appointment",
@@ -5373,19 +4828,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "book_salon_appointment",
-          "arguments": {
-            "location": "Beşiktaş",
-            "service": "saç boyama",
-            "date": "2026-04-07",
-            "time": "14:00"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"book_salon_appointment\", \"arguments\": {\"location\": \"Beşiktaş\", \"service\": \"saç boyama\", \"date\": \"2026-04-07\", \"time\": \"14:00\"}}]}"
   },
   {
     "query": "4. Levent'teki nöbetçi eczanelerde tansiyon ilacımın anlık stok durumunu sorgular mısın?",
@@ -5459,21 +4902,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "query_medication_stock",
-          "arguments": {
-            "location": "4. Levent",
-            "medication_category": "tansiyon",
-            "only_duty_pharmacies": true
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"query_medication_stock\", \"arguments\": {\"location\": \"4. Levent\", \"medication_category\": \"tansiyon\", \"only_duty_pharmacies\": true}}]}"
   },
   {
-    "query": "TEM otoyolunda Edirne yönüne giderken lastiğim gümledi, acil olarak konumuma yol yardım ve lastikçi yönlendirir misin?",
+    "query": "TEM otoyolunda Edirne yönüne giderken lastiğim gümledi, acil olarak yol yardım üzerinden 'lastik patlaması' şikayeti bildirir misin?",
     "tools": [
       {
         "name": "call_police",
@@ -5547,19 +4979,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "request_roadside_assistance",
-          "arguments": {
-            "highway": "TEM",
-            "direction": "Edirne",
-            "issue_type": "lastik patlaması",
-            "urgency": "acil"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"request_roadside_assistance\", \"arguments\": {\"highway\": \"TEM\", \"direction\": \"Edirne\", \"issue_type\": \"lastik patlaması\", \"urgency\": \"acil\"}}]}"
   },
   {
     "query": "Akşama misafir gelecek de, manav reyonundan 2 kilo muz, 1 kilo çilek ve yarım kilo taze nane siparişini temassız teslimat ile verir misin?",
@@ -5643,33 +5063,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "order_groceries",
-          "arguments": {
-            "items": [
-              {
-                "name": "muz",
-                "quantity_kg": 2
-              },
-              {
-                "name": "çilek",
-                "quantity_kg": 1
-              },
-              {
-                "name": "taze nane",
-                "quantity_kg": 0.5
-              }
-            ],
-            "delivery_method": "temassız teslimat"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"order_groceries\", \"arguments\": {\"items\": [{\"name\": \"muz\", \"quantity_kg\": 2}, {\"name\": \"çilek\", \"quantity_kg\": 1}, {\"name\": \"taze nane\", \"quantity_kg\": 0.5}], \"delivery_method\": \"temassız teslimat\"}}]}"
   },
   {
-    "query": "Telefonun camı tuzla buz oldu ekran dokunmatiği de basmıyor, garantisi devam ettiği için yetkili serviste ekran değişimi talebi açsana.",
+    "query": "Telefonun garantisi devam ettiği için 'yetkili_servis' üzerinden 'ekran camı kırık dokunmatik basmıyor' şikayetiyle ve garanti durumu 'active' olacak şekilde ekran değişimi talebi açsana.",
     "tools": [
       {
         "name": "buy_new_phone",
@@ -5752,19 +5149,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "create_repair_ticket",
-          "arguments": {
-            "device_category": "telefon",
-            "issue_description": "ekran camı kırık dokunmatik basmıyor",
-            "service_type": "yetkili_servis",
-            "warranty_status": "active"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"create_repair_ticket\", \"arguments\": {\"device_category\": \"telefon\", \"issue_description\": \"ekran camı kırık dokunmatik basmıyor\", \"service_type\": \"yetkili_servis\", \"warranty_status\": \"active\"}}]}"
   },
   {
     "query": "Yazlık evin bahçesindeki çimlerin biçilmesi ve ağaçların budanması için haftaya pazartesi profesyonel bir bahçıvan ayarlar mısın?",
@@ -5841,24 +5226,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "hire_gardener",
-          "arguments": {
-            "services": [
-              "çim biçme",
-              "ağaç budama"
-            ],
-            "date": "2026-04-13",
-            "professional_level": "profesyonel"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"hire_gardener\", \"arguments\": {\"services\": [\"çim biçme\", \"ağaç budama\"], \"date\": \"2026-04-13\", \"professional_level\": \"profesyonel\"}}]}"
   },
   {
-    "query": "Geçen aydan kalan 450 liralık elektrik fatura borcumu sistemden otomatik öder misin?",
+    "query": "Geçen aydan kalan 450 liralık elektrik fatura borcum için 'pay_balance' eylemini kullanır mısın?",
     "tools": [
       {
         "name": "check_bank_balance",
@@ -5938,18 +5309,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "pay_utility_bill",
-          "arguments": {
-            "utility_type": "elektrik",
-            "amount": 450,
-            "action": "pay_balance"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"pay_utility_bill\", \"arguments\": {\"utility_type\": \"elektrik\", \"amount\": 450, \"action\": \"pay_balance\"}}]}"
   },
   {
     "query": "Hafta sonu çok yorulduk, Kadıköy çevresindeki tarihi hamamlardan pazar öğleden sonrası için 2 kişilik tam tur kese köpük masajı ayarla.",
@@ -6039,23 +5399,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "book_spa_treatment",
-          "arguments": {
-            "location": "Kadıköy",
-            "service_type": "kese köpük",
-            "persons": 2,
-            "date": "2026-04-12",
-            "time_preference": "öğleden sonra"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"book_spa_treatment\", \"arguments\": {\"location\": \"Kadıköy\", \"service_type\": \"kese köpük\", \"persons\": 2, \"date\": \"2026-04-12\", \"time_preference\": \"öğleden sonra\"}}]}"
   },
   {
-    "query": "Sabiha Gökçen havalimanında dün akşam mavi renkli bir sırt çantası unuttum, kayıp eşya bürosuna içinde pasaport olan çanta için sorgu açar mısın?",
+    "query": "Sabiha Gökçen havalimanında dün akşam unuttuğum 'mavi renkli sırt çantası' için kayıp eşya bürosuna içinde pasaport olduğu bilgisiyle sorgu açar mısın?",
     "tools": [
       {
         "name": "report_lost_item",
@@ -6137,22 +5484,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "report_lost_item",
-          "arguments": {
-            "location": "Sabiha Gökçen",
-            "item_description": "mavi renkli sırt çantası",
-            "contains_id": true,
-            "date_lost": "2026-04-06"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"report_lost_item\", \"arguments\": {\"location\": \"Sabiha Gökçen\", \"item_description\": \"mavi renkli sırt çantası\", \"contains_id\": true, \"date_lost\": \"2026-04-06\"}}]}"
   },
   {
-    "query": "İkea'dan aldığım kitaplığın montajı için önümüzdeki cumartesi evime kurulum ekibi yönlendirilmesi için montaj talebi oluştur.",
+    "query": "İkea'dan aldığım 'kitaplık' montajı için önümüzdeki cumartesi evime kurulum ekibi yönlendirilmesi adına montaj talebi oluştur.",
     "tools": [
       {
         "name": "schedule_furniture_assembly",
@@ -6226,18 +5561,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "schedule_furniture_assembly",
-          "arguments": {
-            "store": "İkea",
-            "item": "kitaplık",
-            "date": "2026-04-11"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"schedule_furniture_assembly\", \"arguments\": {\"store\": \"İkea\", \"item\": \"kitaplık\", \"date\": \"2026-04-11\"}}]}"
   },
   {
     "query": "Kızılay'ın depremzedeler için başlattığı son kampanyaya kredi kartımdan 1000 TL bağışta bulun.",
@@ -6318,19 +5642,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "make_charity_donation",
-          "arguments": {
-            "organization": "Kızılay",
-            "campaign": "depremzedeler",
-            "amount": 1000,
-            "payment_method": "kredi kartı"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"make_charity_donation\", \"arguments\": {\"organization\": \"Kızılay\", \"campaign\": \"depremzedeler\", \"amount\": 1000, \"payment_method\": \"kredi kartı\"}}]}"
   },
   {
     "query": "Fenerbahçe'nin bu pazar oynayacağı derbi maçına kale arkası alt tribünden 1 adet bilet satın alır mısın?",
@@ -6419,22 +5731,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "buy_sports_ticket",
-          "arguments": {
-            "team": "Fenerbahçe",
-            "match_type": "derbi",
-            "seating_section": "kale arkası alt",
-            "quantity": 1
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"buy_sports_ticket\", \"arguments\": {\"team\": \"Fenerbahçe\", \"match_type\": \"derbi\", \"seating_section\": \"kale arkası alt\", \"quantity\": 1}}]}"
   },
   {
-    "query": "Salı akşamüstü adresimden takım elbisemi ve ipek kravatımı teslim alması için kuru temizlemeciye kurye kaydı açar mısın?",
+    "query": "'ev' adresinden 'takım elbise' ve 'ipek kravat' ürünlerinin alınması için önümüzdeki salı 'akşamüstü' vaktine kuru temizlemeciye kurye kaydı açar mısın?",
     "tools": [
       {
         "name": "schedule_dry_cleaning_pickup",
@@ -6515,22 +5815,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "schedule_dry_cleaning_pickup",
-          "arguments": {
-            "items": [
-              "takım elbise",
-              "ipek kravat"
-            ],
-            "date": "2026-04-14",
-            "time_preference": "akşamüstü",
-            "pickup_type": "ev"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"schedule_dry_cleaning_pickup\", \"arguments\": {\"items\": [\"takım elbise\", \"ipek kravat\"], \"date\": \"2026-04-14\", \"time_preference\": \"akşamüstü\", \"pickup_type\": \"ev\"}}]}"
   },
   {
     "query": "Yarın Topkapı Sarayı'na gideceğiz, girişte sıra beklememek için 2 adet tam giriş bileti ve İngilizce sesli rehber paketi satın al.",
@@ -6621,20 +5906,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "purchase_museum_ticket",
-          "arguments": {
-            "museum_name": "Topkapı Sarayı",
-            "ticket_count": 2,
-            "ticket_type": "tam",
-            "include_audio_guide": true,
-            "audio_language": "İngilizce"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"purchase_museum_ticket\", \"arguments\": {\"museum_name\": \"Topkapı Sarayı\", \"ticket_count\": 2, \"ticket_type\": \"tam\", \"include_audio_guide\": true, \"audio_language\": \"İngilizce\"}}]}"
   },
   {
     "query": "Esenler otogarından Avrasya tünelini geçerek Suadiye'ye ulaşan güzergahın toplam gişe geçiş ücretini hesaplar mısın?",
@@ -6714,18 +5986,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "calculate_route_and_toll",
-          "arguments": {
-            "origin": "Esenler otogarı",
-            "destination": "Suadiye",
-            "use_tunnel": "Avrasya tüneli"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"calculate_route_and_toll\", \"arguments\": {\"origin\": \"Esenler otogarı\", \"destination\": \"Suadiye\", \"use_tunnel\": \"Avrasya tüneli\"}}]}"
   },
   {
     "query": "Oğlumun doğum günü için cumartesi saat 3'e yetişecek şekilde Pelit pastanesinden 10 kişilik çikolatalı ve arabalı bir yaş pasta sipariş et.",
@@ -6828,21 +6089,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "order_custom_cake",
-          "arguments": {
-            "bakery": "Pelit pastanesi",
-            "theme": "arabalı",
-            "flavor": "çikolatalı",
-            "portion_size": 10,
-            "delivery_date": "2026-04-11",
-            "delivery_time": "15:00"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"order_custom_cake\", \"arguments\": {\"bakery\": \"Pelit pastanesi\", \"theme\": \"arabalı\", \"flavor\": \"çikolatalı\", \"portion_size\": 10, \"delivery_date\": \"2026-04-11\", \"delivery_time\": \"15:00\"}}]}"
   },
   {
     "query": "Ceviz alerjisi olan kız arkadaşımla baş başa yemek yiyebileceğimiz Kadıköy'deki alkolsüz balık restoranlarından bu cuma akşamına iki kişilik yer ayırtır mısın?",
@@ -6929,23 +6176,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "book_restaurant_table",
-          "arguments": {
-            "location": "Kadıköy",
-            "restaurant_type": "balık",
-            "requires_alcohol_free": true,
-            "dietary_restrictions": [
-              "ceviz alerjisi"
-            ],
-            "date": "2026-04-10",
-            "party_size": 2
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"book_restaurant_table\", \"arguments\": {\"location\": \"Kadıköy\", \"restaurant_type\": \"balık\", \"requires_alcohol_free\": true, \"dietary_restrictions\": [\"ceviz alerjisi\"], \"date\": \"2026-04-10\", \"party_size\": 2}}]}"
   },
   {
     "query": "Üniversite öğrencisi kardeşim için Eskişehir Tepebaşı bölgesinde 1+1, eşyalı ve aidat dahil aylık kirası 8000 lirayı geçmeyecek ev ilanlarını süzer misin?",
@@ -7022,22 +6253,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "search_rental_apartments",
-          "arguments": {
-            "location": "Eskişehir Tepebaşı",
-            "room_type": "1+1",
-            "is_furnished": true,
-            "max_rent": 8000
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"search_rental_apartments\", \"arguments\": {\"location\": \"Eskişehir Tepebaşı\", \"room_type\": \"1+1\", \"is_furnished\": true, \"max_rent\": 8000}}]}"
   },
   {
-    "query": "Artık kullanmadığım için her ay boşuna para çeken Netflix dijital aboneliğimin iptal işlemini başlatır mısın?",
+    "query": "Artık Netflix aboneliğimi iptal işlemini 'kullanılmıyor' sebebiyle başlatır mısın?",
     "tools": [
       {
         "name": "cancel_digital_subscription",
@@ -7103,17 +6322,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "cancel_digital_subscription",
-          "arguments": {
-            "service_name": "Netflix",
-            "reason": "kullanılmıyor"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"cancel_digital_subscription\", \"arguments\": {\"service_name\": \"Netflix\", \"reason\": \"kullanılmıyor\"}}]}"
   },
   {
     "query": "Acilen aracı park etmem lazım, Şişli Bomonti civarında şu an boş kapasitesi olan kapalı İspark otoparklarının tam konumunu bulur musun?",
@@ -7190,21 +6399,10 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "find_available_parking",
-          "arguments": {
-            "neighborhood": "Şişli Bomonti",
-            "parking_type": "kapalı",
-            "requires_vacancy": true
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"find_available_parking\", \"arguments\": {\"neighborhood\": \"Şişli Bomonti\", \"parking_type\": \"kapalı\", \"requires_vacancy\": true}}]}"
   },
   {
-    "query": "Plakama geçen ay kesilen hız ihlali trafik cezasını sistem üzerinden kredi kartımın puanlarını kullanarak öder misin?",
+    "query": "Plakama geçen ay kesilen hız ihlali trafik cezasını sistem üzerinden 'kredi kartı puanı' ile öder misin?",
     "tools": [
       {
         "name": "pay_traffic_ticket",
@@ -7272,17 +6470,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "pay_traffic_ticket",
-          "arguments": {
-            "violation_type": "hız ihlali",
-            "payment_method": "kredi kartı puanı"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"pay_traffic_ticket\", \"arguments\": {\"violation_type\": \"hız ihlali\", \"payment_method\": \"kredi kartı puanı\"}}]}"
   },
   {
     "query": "Dışarısı buz gibi oldu, akıllı ev sisteminden salonun kombi derecesini 24'e çıkarıp ısıtma moduna alır mısın?",
@@ -7364,18 +6552,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "set_smart_thermostat",
-          "arguments": {
-            "room": "salon",
-            "target_temperature": 24,
-            "mode": "ısıtma"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"set_smart_thermostat\", \"arguments\": {\"room\": \"salon\", \"target_temperature\": 24, \"mode\": \"ısıtma\"}}]}"
   },
   {
     "query": "ÖSYM'nin sitesine girip önümüzdeki ay yapılacak olan ALES sınavı için başvuru işlemlerimi tamamlar mısın?",
@@ -7445,17 +6622,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "submit_exam_application",
-          "arguments": {
-            "institution": "ÖSYM",
-            "exam_name": "ALES"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"submit_exam_application\", \"arguments\": {\"institution\": \"ÖSYM\", \"exam_name\": \"ALES\"}}]}"
   },
   {
     "query": "Yeni çıkacak olan iPhone 15 Pro Max 256GB modeli için en güvendiğim teknoloji marketlerindeki güncel ön sipariş fiyatlarını karşılaştırır mısın?",
@@ -7533,18 +6700,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "compare_product_prices",
-          "arguments": {
-            "product_name": "iPhone 15 Pro Max",
-            "storage_capacity": "256GB",
-            "condition": "ön sipariş"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"compare_product_prices\", \"arguments\": {\"product_name\": \"iPhone 15 Pro Max\", \"storage_capacity\": \"256GB\", \"condition\": \"ön sipariş\"}}]}"
   },
   {
     "query": "Gözlük numaram değiştiği için daha önce kayıtlı olan reçetemle Miyop -2.50 numaralı aylık şeffaf lens siparişi oluşturur musun?",
@@ -7625,18 +6781,7 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "order_contact_lenses",
-          "arguments": {
-            "prescription_type": "Miyop",
-            "power": -2.50,
-            "lens_type": "aylık şeffaf"
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"order_contact_lenses\", \"arguments\": {\"prescription_type\": \"Miyop\", \"power\": -2.5, \"lens_type\": \"aylık şeffaf\"}}]}"
   },
   {
     "query": "Hemen bu akşam 20:00 seansında Kanyon AVM sinemasında alt yazılı olarak gösterilen Dune 2 filmine orta sıralardan iki bilet alır mısın?",
@@ -7727,21 +6872,6 @@
         }
       }
     ],
-    "answer": {
-      "tool_calls": [
-        {
-          "name": "buy_cinema_ticket",
-          "arguments": {
-            "movie_name": "Dune 2",
-            "theater_location": "Kanyon AVM",
-            "language_option": "alt yazılı",
-            "date": "bugün akşam",
-            "time": "20:00",
-            "seat_preference": "orta sıra",
-            "quantity": 2
-          }
-        }
-      ]
-    }
+    "answer": "{\"tool_calls\": [{\"name\": \"buy_cinema_ticket\", \"arguments\": {\"movie_name\": \"Dune 2\", \"theater_location\": \"Kanyon AVM\", \"language_option\": \"alt yazılı\", \"date\": \"2026-04-07\", \"time\": \"20:00\", \"seat_preference\": \"orta sıra\", \"quantity\": 2}}]}"
   }
 ]

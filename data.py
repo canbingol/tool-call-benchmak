@@ -64,13 +64,16 @@ class Data:
             parsed = answers_raw
 
         # Extract tool_calls if it's a dict with tool_calls key
-        if isinstance(parsed, dict) and "tool_calls" in parsed:
+        if isinstance(parsed, dict):
             return parsed["tool_calls"]
 
         return parsed
 
     def apply_chat_template_all(self):
-        original_columns = self.dataset.column_names
+        original_columns = [
+            column for column in self.dataset.column_names
+            if column != "order_matters"
+        ]
 
         self.golds = [
             self._parse_answers(example.get("answer"))

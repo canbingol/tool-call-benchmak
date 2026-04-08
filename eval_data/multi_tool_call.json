@@ -1,0 +1,5720 @@
+[
+  {
+    "query": "15 Nisan 2026 tarihinde eşimle beraber Paris'te olacağız. O gün için 'Eiffel Tower, Paris' yakınlarında bir otel odası ayırtmanı ve akşam saat 20:00'de Le Jules Verne restoranında 2 kişilik rezervasyon yapmanı rica ediyorum.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "book_hotel",
+        "description": "Books a hotel room at a specified location for a given date and number of guests.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The desired location of the hotel."
+            },
+            "check_in_date": {
+              "type": "string",
+              "description": "The check-in date in YYYY-MM-DD format."
+            },
+            "guests": {
+              "type": "integer",
+              "description": "Number of guests staying in the room."
+            }
+          },
+          "required": [
+            "location",
+            "check_in_date",
+            "guests"
+          ]
+        }
+      },
+      {
+        "name": "reserve_restaurant",
+        "description": "Makes a reservation at a restaurant for a given date and time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "restaurant_name": {
+              "type": "string",
+              "description": "Name of the restaurant."
+            },
+            "date": {
+              "type": "string",
+              "description": "Date of the reservation in YYYY-MM-DD format."
+            },
+            "time": {
+              "type": "string",
+              "description": "Time of the reservation in HH:MM format."
+            },
+            "party_size": {
+              "type": "integer",
+              "description": "Number of people for the reservation."
+            }
+          },
+          "required": [
+            "restaurant_name",
+            "date",
+            "time",
+            "party_size"
+          ]
+        }
+      },
+      {
+        "name": "search_flights",
+        "description": "Searches for available flights between two locations.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string",
+              "description": "Departure city or airport."
+            },
+            "destination": {
+              "type": "string",
+              "description": "Arrival city or airport."
+            },
+            "date": {
+              "type": "string",
+              "description": "Departure date in YYYY-MM-DD format."
+            }
+          },
+          "required": [
+            "origin",
+            "destination",
+            "date"
+          ]
+        }
+      },
+      {
+        "name": "get_weather_forecast",
+        "description": "Retrieves the weather forecast for a specific location.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "City or specific location."
+            }
+          },
+          "required": [
+            "location"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"book_hotel\", \"arguments\": {\"location\": \"Eiffel Tower, Paris\", \"check_in_date\": \"2026-04-15\", \"guests\": 2}}, {\"name\": \"reserve_restaurant\", \"arguments\": {\"restaurant_name\": \"Le Jules Verne\", \"date\": \"2026-04-15\", \"time\": \"20:00\", \"party_size\": 2}}]}"
+  },
+  {
+    "query": "Misafirler birazdan gelecek, lütfen 'living room' (salon) klimalarını 22 dereceye ayarla, dış kapının kilidini 'front door' seçimiyle hızlıca aç ve hemen 'garden' (bahçe) ışıklarını yak.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "set_thermostat",
+        "description": "Sets the thermostat in a specific room to the desired temperature.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room": {
+              "type": "string",
+              "description": "The room where the thermostat is located."
+            },
+            "temperature": {
+              "type": "integer",
+              "description": "The target temperature in Celsius."
+            }
+          },
+          "required": [
+            "room",
+            "temperature"
+          ]
+        }
+      },
+      {
+        "name": "unlock_door",
+        "description": "Unlocks a specified door in the smart home system.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "door_location": {
+              "type": "string",
+              "description": "The location of the door to be unlocked."
+            }
+          },
+          "required": [
+            "door_location"
+          ]
+        }
+      },
+      {
+        "name": "toggle_lights",
+        "description": "Turns the lights in a specific area on or off.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room": {
+              "type": "string",
+              "description": "The room or area where the lights are located."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "on",
+                "off"
+              ],
+              "description": "The desired state of the lights."
+            }
+          },
+          "required": [
+            "room",
+            "state"
+          ]
+        }
+      },
+      {
+        "name": "play_music",
+        "description": "Plays a specific playlist or song in a given room.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room": {
+              "type": "string",
+              "description": "The room where the music should be played."
+            },
+            "playlist": {
+              "type": "string",
+              "description": "The name of the playlist or song."
+            }
+          },
+          "required": [
+            "room",
+            "playlist"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"set_thermostat\", \"arguments\": {\"room\": \"living room\", \"temperature\": 22}}, {\"name\": \"unlock_door\", \"arguments\": {\"door_location\": \"front door\"}}, {\"name\": \"toggle_lights\", \"arguments\": {\"room\": \"garden\", \"state\": \"on\"}}]}"
+  },
+  {
+    "query": "Sipariş numaram ORD-9871, aldığım buzdolabı maalesef 'damaged item' (hasarlı) geldi. Lütfen iade sürecini başlat ve işlemi 'full' tipinde tam para iadesi yapacak şekilde ayarla. İkisi de halledildikten sonra can@benimmail.com adresime konuyla ilgili 'Return and Refund Confirmation' (Onay) e-postası yolla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "initiate_return",
+        "description": "Initiates a return process for a given order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "description": "The unique identifier of the order."
+            },
+            "reason": {
+              "type": "string",
+              "description": "The reason for the return."
+            }
+          },
+          "required": [
+            "order_id",
+            "reason"
+          ]
+        }
+      },
+      {
+        "name": "process_refund",
+        "description": "Processes a refund for a given order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "description": "The unique identifier of the order."
+            },
+            "refund_type": {
+              "type": "string",
+              "enum": [
+                "full",
+                "partial"
+              ],
+              "description": "The type of refund to process."
+            }
+          },
+          "required": [
+            "order_id",
+            "refund_type"
+          ]
+        }
+      },
+      {
+        "name": "send_email",
+        "description": "Sends an email to a specified recipient.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipient_email": {
+              "type": "string",
+              "description": "The email address of the recipient."
+            },
+            "subject": {
+              "type": "string",
+              "description": "The subject line of the email."
+            },
+            "body": {
+              "type": "string",
+              "description": "The main content of the email."
+            }
+          },
+          "required": [
+            "recipient_email",
+            "subject",
+            "body"
+          ]
+        }
+      },
+      {
+        "name": "get_order_status",
+        "description": "Retrieves the current status of an order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": {
+              "type": "string",
+              "description": "The unique identifier of the order."
+            }
+          },
+          "required": [
+            "order_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"initiate_return\", \"arguments\": {\"order_id\": \"ORD-9871\", \"reason\": \"damaged item\"}}, {\"name\": \"process_refund\", \"arguments\": {\"order_id\": \"ORD-9871\", \"refund_type\": \"full\"}}, {\"name\": \"send_email\", \"arguments\": {\"recipient_email\": \"can@benimmail.com\", \"subject\": \"Return and Refund Confirmation\", \"body\": \"Your return for order ORD-9871 has been initiated due to a damaged item and a full refund has been processed.\"}}]}"
+  },
+  {
+    "query": "10 Nisan 2026 saat 14:30'daki 'marketing meeting' toplantısını takvimden sil ve yerine 11 Nisan 2026 sabah 10:00 için 'strategy meeting' adlı yeni bir strateji toplantısı oluştur. Son işlem olarak da #pazarlama kanalına toplantının ertelendiğini bildiren kısa bir mesaj at.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "cancel_event",
+        "description": "Cancels an existing event in the calendar.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "event_name": {
+              "type": "string",
+              "description": "The title of the event to cancel."
+            },
+            "date": {
+              "type": "string",
+              "description": "The date of the event in YYYY-MM-DD format."
+            },
+            "time": {
+              "type": "string",
+              "description": "The time of the event in HH:MM format."
+            }
+          },
+          "required": [
+            "event_name",
+            "date",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "create_event",
+        "description": "Creates a new event in the calendar.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "The title of the new event."
+            },
+            "date": {
+              "type": "string",
+              "description": "The date of the event in YYYY-MM-DD format."
+            },
+            "time": {
+              "type": "string",
+              "description": "The time of the event in HH:MM format."
+            }
+          },
+          "required": [
+            "title",
+            "date",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "send_slack_message",
+        "description": "Sends a message to a specific Slack channel.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string",
+              "description": "The name of the Slack channel (including #)."
+            },
+            "message": {
+              "type": "string",
+              "description": "The content of the message to send."
+            }
+          },
+          "required": [
+            "channel",
+            "message"
+          ]
+        }
+      },
+      {
+        "name": "list_events",
+        "description": "Lists all events for a given calendar date.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string",
+              "description": "The date to list events for in YYYY-MM-DD format."
+            }
+          },
+          "required": [
+            "date"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"cancel_event\", \"arguments\": {\"event_name\": \"marketing meeting\", \"date\": \"2026-04-10\", \"time\": \"14:30\"}}, {\"name\": \"create_event\", \"arguments\": {\"title\": \"strategy meeting\", \"date\": \"2026-04-11\", \"time\": \"10:00\"}}, {\"name\": \"send_slack_message\", \"arguments\": {\"channel\": \"#pazarlama\", \"message\": \"The marketing meeting has been postponed and rescheduled as a strategy meeting on April 11 at 10:00 AM.\"}}]}"
+  },
+  {
+    "query": "Merhaba, 14 Nisan 2026 tarihi sabah 10:00 için Dr. Yılmaz'dan 'ophthalmology' (göz) muayenesi randevusu al. Randevu oluşturulduktan sonra Allianz özel sağlık sigortamın bu 'eye examination' işlemini karşılayıp karşılamadığını sorgula ve randevuyu 'Eye checkup with Dr. Yılmaz' başlığıyla takvimime kaydet.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "book_doctor_appointment",
+        "description": "Books a medical appointment with a specific doctor.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "doctor_name": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            },
+            "department": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "doctor_name",
+            "date",
+            "time",
+            "department"
+          ]
+        }
+      },
+      {
+        "name": "check_insurance_coverage",
+        "description": "Checks if a specific medical procedure or appointment is covered by the user's insurance.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "insurance_provider": {
+              "type": "string"
+            },
+            "procedure_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "insurance_provider",
+            "procedure_type"
+          ]
+        }
+      },
+      {
+        "name": "add_to_calendar",
+        "description": "Adds an event to the user's personal calendar.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "event_title": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event_title",
+            "date",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "get_medical_records",
+        "description": "Retrieves medical records for the patient.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "record_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_type"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"book_doctor_appointment\", \"arguments\": {\"doctor_name\": \"Dr. Yılmaz\", \"date\": \"2026-04-14\", \"time\": \"10:00\", \"department\": \"ophthalmology\"}}, {\"name\": \"check_insurance_coverage\", \"arguments\": {\"insurance_provider\": \"Allianz\", \"procedure_type\": \"eye examination\"}}, {\"name\": \"add_to_calendar\", \"arguments\": {\"event_title\": \"Eye checkup with Dr. Yılmaz\", \"date\": \"2026-04-14\", \"time\": \"10:00\"}}]}"
+  },
+  {
+    "query": "Lütfen 'salary account' (maaş) hesabımdan ev sahibinin TR1234567890 numaralı IBAN'ına 'TRY' para birimiyle 15000 TL kira ödemesi yap. Ayrıca 4567 numaralı sözleşmeye ait 'electricity' faturasını da öde. Her iki işlem de başarıyla tamamlanınca 05321112233 numaralı telefonuma 'Rent transfer of 15000 TRY and electricity bill payment were successful.' şeklinde SMS at.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "transfer_funds",
+        "description": "Transfers money from a source account to a destination IBAN.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "source_account": {
+              "type": "string"
+            },
+            "destination_iban": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "integer"
+            },
+            "currency": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "source_account",
+            "destination_iban",
+            "amount",
+            "currency"
+          ]
+        }
+      },
+      {
+        "name": "pay_bill",
+        "description": "Pays a utility bill for a given contract number.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "contract_number": {
+              "type": "string"
+            },
+            "bill_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "contract_number",
+            "bill_type"
+          ]
+        }
+      },
+      {
+        "name": "send_sms",
+        "description": "Sends an SMS message to a specific phone number.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "phone_number": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "phone_number",
+            "message"
+          ]
+        }
+      },
+      {
+        "name": "get_exchange_rates",
+        "description": "Gets current exchange rates for specified currencies.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "base_currency": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "base_currency"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"transfer_funds\", \"arguments\": {\"source_account\": \"salary account\", \"destination_iban\": \"TR1234567890\", \"amount\": 15000, \"currency\": \"TRY\"}}, {\"name\": \"pay_bill\", \"arguments\": {\"contract_number\": \"4567\", \"bill_type\": \"electricity\"}}, {\"name\": \"send_sms\", \"arguments\": {\"phone_number\": \"05321112233\", \"message\": \"Rent transfer of 15000 TRY and electricity bill payment were successful.\"}}]}"
+  },
+  {
+    "query": "'current location' konumumdan 'Antalya Airport' yönüne bir rota çiz ve yol üstündeki en yüksek puanlı ('highest_rated') 'rest stop' dinlenme tesisini bul. Ardından her ikisini de arabanın ana bilgi ekranına 'route_and_poi' veri tipiyle aktar.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "calculate_route",
+        "description": "Calculates the best driving route between an origin and a destination.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string"
+            },
+            "destination": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "find_places_on_route",
+        "description": "Finds points of interest (POI) along a mapped route.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "poi_type": {
+              "type": "string"
+            },
+            "sort_by": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "poi_type",
+            "sort_by"
+          ]
+        }
+      },
+      {
+        "name": "send_to_vehicle_display",
+        "description": "Sends map or route instructions to the vehicle's main infotainment display.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "content_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "content_type"
+          ]
+        }
+      },
+      {
+        "name": "start_music",
+        "description": "Starts playing music in the car.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "genre": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "genre"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"calculate_route\", \"arguments\": {\"origin\": \"current location\", \"destination\": \"Antalya Airport\"}}, {\"name\": \"find_places_on_route\", \"arguments\": {\"poi_type\": \"rest stop\", \"sort_by\": \"highest_rated\"}}, {\"name\": \"send_to_vehicle_display\", \"arguments\": {\"content_type\": \"route_and_poi\"}}]}"
+  },
+  {
+    "query": "Bugünkü koşu antrenmanımı 'run' aktivite tipiyle 5 kilometre ve 30 dakika olarak sisteme kaydet. Ardından bu 'run' antrenmanının kalp atış hızım üzerindeki etkisini analiz et ve günlük kalori yakımıma yansıt.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "log_workout",
+        "description": "Logs a physical workout session with distance and duration.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "activity_type": {
+              "type": "string"
+            },
+            "distance_km": {
+              "type": "number"
+            },
+            "duration_minutes": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "activity_type",
+            "distance_km",
+            "duration_minutes"
+          ]
+        }
+      },
+      {
+        "name": "analyze_heart_rate",
+        "description": "Analyzes heart rate data corresponding to a logged workout.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "activity_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "activity_type"
+          ]
+        }
+      },
+      {
+        "name": "update_daily_calories",
+        "description": "Updates the daily calorie tracking system based on recent workouts.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sync_workouts": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "sync_workouts"
+          ]
+        }
+      },
+      {
+        "name": "list_diet_plan",
+        "description": "Lists the diet plan for the day.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_calories": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "target_calories"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"log_workout\", \"arguments\": {\"activity_type\": \"run\", \"distance_km\": 5, \"duration_minutes\": 30}}, {\"name\": \"analyze_heart_rate\", \"arguments\": {\"activity_type\": \"run\"}}, {\"name\": \"update_daily_calories\", \"arguments\": {\"sync_workouts\": true}}]}"
+  },
+  {
+    "query": "Akıllı kedi besleyiciyi çalıştırıp tepsiye 50 gram 'wet food' yaş mama dök. Suyunun sıcaklığını kontrol edip 20 derece yap ve her ikisi de bitince bana telefondan 'Pet Care Alert' başlığıyla, içeriği '50 grams of wet food dispensed and water temperature set to 20 degrees Celsius.' olan bir bildirim gönder.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "dispense_pet_food",
+        "description": "Dispenses a specific amount of pet food into the tray.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "food_type": {
+              "type": "string"
+            },
+            "amount_grams": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "food_type",
+            "amount_grams"
+          ]
+        }
+      },
+      {
+        "name": "set_water_temperature",
+        "description": "Sets the temperature of the pet's water bowl.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "temperature_celsius": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "temperature_celsius"
+          ]
+        }
+      },
+      {
+        "name": "send_push_notification",
+        "description": "Sends a push notification to the user's registered mobile device.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "message"
+          ]
+        }
+      },
+      {
+        "name": "order_pet_supplies",
+        "description": "Places an automated order for pet supplies.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "item_name": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "item_name",
+            "quantity"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"dispense_pet_food\", \"arguments\": {\"food_type\": \"wet food\", \"amount_grams\": 50}}, {\"name\": \"set_water_temperature\", \"arguments\": {\"temperature_celsius\": 20}}, {\"name\": \"send_push_notification\", \"arguments\": {\"title\": \"Pet Care Alert\", \"message\": \"50 grams of wet food dispensed and water temperature set to 20 degrees Celsius.\"}}]}"
+  },
+  {
+    "query": "Sipariş listeme 2 adet 'whole milk' ekle, teslimat adresimi 'office' olarak güncelle ve ardından 'saved credit card' yöntemini kullanarak sepetimi onayla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "add_to_cart",
+        "description": "Adds a specified quantity of a product to the shopping cart.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "product_name",
+            "quantity"
+          ]
+        }
+      },
+      {
+        "name": "checkout_cart",
+        "description": "Completes the purchase using the specified payment method.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "payment_method": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "payment_method"
+          ]
+        }
+      },
+      {
+        "name": "update_delivery_address",
+        "description": "Updates the delivery address for the current account or order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "address_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "address_type"
+          ]
+        }
+      },
+      {
+        "name": "search_products",
+        "description": "Searches for products in the store matching a query.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"add_to_cart\", \"arguments\": {\"product_name\": \"whole milk\", \"quantity\": 2}}, {\"name\": \"update_delivery_address\", \"arguments\": {\"address_type\": \"office\"}}, {\"name\": \"checkout_cart\", \"arguments\": {\"payment_method\": \"saved credit card\"}}]}"
+  },
+  {
+    "query": "'living room' televizyonunu açıp HDMI 2 girişine geç, ardından sesi tamamen kapat. Son olarak ışıkları 'cinema' moduna al.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "turn_on_tv",
+        "description": "Turns on the television in a specific room.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "room"
+          ]
+        }
+      },
+      {
+        "name": "switch_tv_input",
+        "description": "Changes the input source of the television.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "input_source": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "input_source"
+          ]
+        }
+      },
+      {
+        "name": "mute_tv_volume",
+        "description": "Mutes or unmutes the television volume.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mute_status": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "mute_status"
+          ]
+        }
+      },
+      {
+        "name": "set_lighting_scene",
+        "description": "Changes the smart lights to a predefined scene.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "scene_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "scene_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"turn_on_tv\", \"arguments\": {\"room\": \"living room\"}}, {\"name\": \"switch_tv_input\", \"arguments\": {\"input_source\": \"HDMI 2\"}}, {\"name\": \"mute_tv_volume\", \"arguments\": {\"mute_status\": true}}, {\"name\": \"set_lighting_scene\", \"arguments\": {\"scene_name\": \"cinema\"}}]}"
+  },
+  {
+    "query": "Acme Corp.'taki 'marketing manager' pozisyonuna güncel CV'mi PDF formatında yükleyerek başvuruyu gönder. Başvuru tamamlandıktan sonra kendi takvimime 18 Nisan 2026 saat 14:00 için bir takip hatırlatıcısı kur.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "submit_job_application",
+        "description": "Submits a job application with the specified format to a company.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "company": {
+              "type": "string"
+            },
+            "position": {
+              "type": "string"
+            },
+            "resume_format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "company",
+            "position",
+            "resume_format"
+          ]
+        }
+      },
+      {
+        "name": "create_calendar_reminder",
+        "description": "Sets a reminder on the calendar for a future event.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date",
+            "time",
+            "title"
+          ]
+        }
+      },
+      {
+        "name": "get_application_status",
+        "description": "Checks the status of an existing job application.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "application_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "application_id"
+          ]
+        }
+      },
+      {
+        "name": "withdraw_application",
+        "description": "Withdraws a previously submitted job application.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "company": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "company"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"submit_job_application\", \"arguments\": {\"company\": \"Acme Corp.\", \"position\": \"marketing manager\", \"resume_format\": \"PDF\"}}, {\"name\": \"create_calendar_reminder\", \"arguments\": {\"date\": \"2026-04-18\", \"time\": \"14:00\", \"title\": \"Application follow-up\"}}]}"
+  },
+  {
+    "query": "Büyük boy ('large') 'mixed pizza' siparişi oluşturmadan önce sepetime 'INDIRIM20' kodunu tanımla. Ardından siparişi tamamla ve teslimat için arkadaşa 'Please do not ring the bell' notasını ilet.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "apply_promo_code",
+        "description": "Applies a promotional discount code to the current order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code"
+          ]
+        }
+      },
+      {
+        "name": "place_food_order",
+        "description": "Places a food delivery order for a specific item.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "item_name": {
+              "type": "string"
+            },
+            "size": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "item_name",
+            "size"
+          ]
+        }
+      },
+      {
+        "name": "add_delivery_note",
+        "description": "Adds special instructions for the delivery driver.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "note_content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "note_content"
+          ]
+        }
+      },
+      {
+        "name": "track_delivery",
+        "description": "Provides live tracking details for an active delivery.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "order_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"apply_promo_code\", \"arguments\": {\"code\": \"INDIRIM20\"}}, {\"name\": \"place_food_order\", \"arguments\": {\"item_name\": \"mixed pizza\", \"size\": \"large\"}}, {\"name\": \"add_delivery_note\", \"arguments\": {\"note_content\": \"Please do not ring the bell\"}}]}"
+  },
+  {
+    "query": "25 Mayıs 2026 tarihinde gerçekleşecek olan 'Tarkan concert' için VIP bölümünden 2 adet bilet satın al ve biletleri can@mail.com adresime 'Concert Tickets' başlıklı ve ekte ('attachment') olacak şekilde e-posta olarak yolla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "purchase_tickets",
+        "description": "Purchases tickets for an event on a specific date.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "event_name": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "section": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "event_name",
+            "date",
+            "section",
+            "quantity"
+          ]
+        }
+      },
+      {
+        "name": "send_email",
+        "description": "Sends an email to a given recipient.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "to_email": {
+              "type": "string"
+            },
+            "subject": {
+              "type": "string"
+            },
+            "body_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "to_email",
+            "subject",
+            "body_type"
+          ]
+        }
+      },
+      {
+        "name": "search_events",
+        "description": "Searches for events happening on a certain date.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date"
+          ]
+        }
+      },
+      {
+        "name": "refund_ticket",
+        "description": "Processes a refund for a purchased ticket.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticket_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ticket_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"purchase_tickets\", \"arguments\": {\"event_name\": \"Tarkan concert\", \"date\": \"2026-05-25\", \"section\": \"VIP\", \"quantity\": 2}}, {\"name\": \"send_email\", \"arguments\": {\"to_email\": \"can@mail.com\", \"subject\": \"Concert Tickets\", \"body_type\": \"attachment\"}}]}"
+  },
+  {
+    "query": "10 Nisan 2026 sabah 09:00 için bir ev temizlik hizmeti ayarla. 'cleaner' profilli görevliye sitenin dış kapı şifresini iletmek için 'Building gate code is 2468' şeklinde SMS gönder ve son olarak 'Please close the windows when done' yazılı bir not bırak.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "book_cleaning_service",
+        "description": "Books a home cleaning appointment for a set date and time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "send_sms",
+        "description": "Sends an SMS message to a specific recipient type.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipient_type": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipient_type",
+            "message"
+          ]
+        }
+      },
+      {
+        "name": "add_service_note",
+        "description": "Adds an informational note to a booked service.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "note_text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "note_text"
+          ]
+        }
+      },
+      {
+        "name": "cancel_cleaning_service",
+        "description": "Cancels an upcoming cleaning service booking.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "booking_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "booking_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"book_cleaning_service\", \"arguments\": {\"date\": \"2026-04-10\", \"time\": \"09:00\"}}, {\"name\": \"send_sms\", \"arguments\": {\"recipient_type\": \"cleaner\", \"message\": \"Building gate code is 2468\"}}, {\"name\": \"add_service_note\", \"arguments\": {\"note_text\": \"Please close the windows when done\"}}]}"
+  },
+  {
+    "query": "Instagram'da 'gezgin_can' isimli kullanıcıyı takip et, en son ('latest') gönderisini beğen ve altına yorum olarak 'Harika bir manzara!' diye yaz.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "follow_user",
+        "description": "Follows a specified user profile on social media.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        }
+      },
+      {
+        "name": "like_post",
+        "description": "Likes a specific post for a given user.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            },
+            "post_index": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "username",
+            "post_index"
+          ]
+        }
+      },
+      {
+        "name": "comment_on_post",
+        "description": "Leaves a comment on a media post.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            },
+            "comment_text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "username",
+            "comment_text"
+          ]
+        }
+      },
+      {
+        "name": "block_user",
+        "description": "Blocks a user profile so they cannot interact with your account.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"follow_user\", \"arguments\": {\"username\": \"gezgin_can\"}}, {\"name\": \"like_post\", \"arguments\": {\"username\": \"gezgin_can\", \"post_index\": \"latest\"}}, {\"name\": \"comment_on_post\", \"arguments\": {\"username\": \"gezgin_can\", \"comment_text\": \"Harika bir manzara!\"}}]}"
+  },
+  {
+    "query": "Udemy sisteminde 'Spanish for Beginners' kursuna kaydol ve kurs ücretini 'saved card' yöntemiyle öde. Aynı zamanda hafta içi ('weekdays') her akşam saat 20:00'ye yarım saatlik çalışma alarmı kur.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "enroll_in_course",
+        "description": "Submits a registration request for an online course platform.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "type": "string"
+            },
+            "course_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform",
+            "course_name"
+          ]
+        }
+      },
+      {
+        "name": "process_payment",
+        "description": "Completes a payment transaction using a set method.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "payment_method": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "payment_method"
+          ]
+        }
+      },
+      {
+        "name": "set_recurring_alarm",
+        "description": "Creates a repeating daily or weekly alarm for studying.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "string"
+            },
+            "days": {
+              "type": "string"
+            },
+            "duration_minutes": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "time",
+            "days",
+            "duration_minutes"
+          ]
+        }
+      },
+      {
+        "name": "drop_course",
+        "description": "Removes the user from a previously enrolled course.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "course_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "course_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"enroll_in_course\", \"arguments\": {\"platform\": \"Udemy\", \"course_name\": \"Spanish for Beginners\"}}, {\"name\": \"process_payment\", \"arguments\": {\"payment_method\": \"saved card\"}}, {\"name\": \"set_recurring_alarm\", \"arguments\": {\"time\": \"20:00\", \"days\": \"weekdays\", \"duration_minutes\": 30}}]}"
+  },
+  {
+    "query": "12 Haziran 2026 tarihinde 'Izmir Adnan Menderes Airport' lokasyonundan alınmak üzere 'economy' sınıf bir araç kiralama rezervasyonu yap. Ayrıca 3 günlük ekstra sigorta paketini de bu kiralama işlemine dahil et.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "rent_vehicle",
+        "description": "Makes a vehicle rental reservation at a specified place and time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pickup_location": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "car_class": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "pickup_location",
+            "date",
+            "car_class"
+          ]
+        }
+      },
+      {
+        "name": "add_rental_insurance",
+        "description": "Appends an insurance package to an active vehicle rental.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "duration_days": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "duration_days"
+          ]
+        }
+      },
+      {
+        "name": "cancel_rental",
+        "description": "Cancels an existing car rental reservation.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "reservation_code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "reservation_code"
+          ]
+        }
+      },
+      {
+        "name": "get_vehicle_details",
+        "description": "Retrieves the specifications of the selected rental vehicle.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "car_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "car_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"rent_vehicle\", \"arguments\": {\"pickup_location\": \"Izmir Adnan Menderes Airport\", \"date\": \"2026-06-12\", \"car_class\": \"economy\"}}, {\"name\": \"add_rental_insurance\", \"arguments\": {\"duration_days\": 3}}]}"
+  },
+  {
+    "query": "Steam üzerinden Cyberpunk oyununu çalıştır. Oyun açıldıktan sonra arkadaş listemdeki 'oyuncu_ahmet' isimli kullanıcıya hemen bir lobi daveti at ve mikrofonumu aktif hale getir.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "launch_game",
+        "description": "Opens a selected video game on a given launcher platform.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "type": "string"
+            },
+            "game_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform",
+            "game_name"
+          ]
+        }
+      },
+      {
+        "name": "send_game_invite",
+        "description": "Sends a multiplayer game invite to a friend.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "username"
+          ]
+        }
+      },
+      {
+        "name": "toggle_microphone",
+        "description": "Turns the voice chat microphone on or off.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "state": {
+              "type": "string",
+              "enum": [
+                "on",
+                "off"
+              ]
+            }
+          },
+          "required": [
+            "state"
+          ]
+        }
+      },
+      {
+        "name": "close_game",
+        "description": "Immediately quits the running video game.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "game_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "game_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"launch_game\", \"arguments\": {\"platform\": \"Steam\", \"game_name\": \"Cyberpunk\"}}, {\"name\": \"send_game_invite\", \"arguments\": {\"username\": \"oyuncu_ahmet\"}}, {\"name\": \"toggle_microphone\", \"arguments\": {\"state\": \"on\"}}]}"
+  },
+  {
+    "query": "'current location' üzerinden Kadıköy rıhtıma bir taksi çağır. Araç yola çıktığında tahmini varış süremi rehberimdeki 'Annem' kişisiyle paylaş.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "request_ride",
+        "description": "Requests a taxi or ride-share to a specific destination.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pickup_location": {
+              "type": "string"
+            },
+            "dropoff_location": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "pickup_location",
+            "dropoff_location"
+          ]
+        }
+      },
+      {
+        "name": "share_eta",
+        "description": "Shares the estimated time of arrival with a saved contact.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "contact_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "contact_name"
+          ]
+        }
+      },
+      {
+        "name": "cancel_ride",
+        "description": "Cancels an ongoing ride request.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "cancellation_reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cancellation_reason"
+          ]
+        }
+      },
+      {
+        "name": "get_ride_estimate",
+        "description": "Gets a price estimate for a potential ride.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pickup_location": {
+              "type": "string"
+            },
+            "dropoff_location": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "pickup_location",
+            "dropoff_location"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"request_ride\", \"arguments\": {\"pickup_location\": \"current location\", \"dropoff_location\": \"Kadıköy rıhtım\"}}, {\"name\": \"share_eta\", \"arguments\": {\"contact_name\": \"Annem\"}}]}"
+  },
+  {
+    "query": "08 Nisan 2026 öğleden sonra saat 15:00'te favori kuaförümden saç kesimi için randevu al. İşlemi özellikle yetkili 'Ayşe Güzellik Ustası'nın yapması için bir tercih notu düş.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "book_salon_appointment",
+        "description": "Books a service appointment at a beauty salon.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            },
+            "service": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date",
+            "time",
+            "service"
+          ]
+        }
+      },
+      {
+        "name": "add_appointment_preference",
+        "description": "Adds a special preference or note to an existing salon appointment.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "stylist_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "stylist_name"
+          ]
+        }
+      },
+      {
+        "name": "cancel_appointment",
+        "description": "Cancels a booked beauty appointment.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "appointment_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "appointment_id"
+          ]
+        }
+      },
+      {
+        "name": "list_available_stylists",
+        "description": "Lists stylists available at a specific date and time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date",
+            "time"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"book_salon_appointment\", \"arguments\": {\"date\": \"2026-04-08\", \"time\": \"15:00\", \"service\": \"saç kesimi\"}}, {\"name\": \"add_appointment_preference\", \"arguments\": {\"stylist_name\": \"Ayşe Güzellik Ustası\"}}]}"
+  },
+  {
+    "query": "E-kitap mağazasında 'Mars Yıllıkları' kitabını satın al. Satın alma işlemi başarıyla tamamlandıktan sonra e-kitabı direkt olarak Kindle cihazıma kablosuz olarak gönder.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "purchase_ebook",
+        "description": "Purchases an electronic book from the connected store.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "book_title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "book_title"
+          ]
+        }
+      },
+      {
+        "name": "send_to_device",
+        "description": "Sends purchased digital media to a specific reader device wirelessly.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "device_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "device_name"
+          ]
+        }
+      },
+      {
+        "name": "search_books",
+        "description": "Searches the digital store for books matching a query.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "search_query": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "search_query"
+          ]
+        }
+      },
+      {
+        "name": "leave_book_review",
+        "description": "Leaves a written review for a read book.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "book_title": {
+              "type": "string"
+            },
+            "rating_stars": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "book_title",
+            "rating_stars"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"purchase_ebook\", \"arguments\": {\"book_title\": \"Mars Yıllıkları\"}}, {\"name\": \"send_to_device\", \"arguments\": {\"device_name\": \"Kindle\"}}]}"
+  },
+  {
+    "query": "Gönderim noktası 'home' (ev) ve varış noktası 'office' (ofis) olacak şekilde bir kargo paketi oluştur. Paket için hemen 'PDF' formatında bir gönderim barkodu çıkar ve teslim alma işlemi için kuryeyi 'home' (ev) adresime çağır.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "create_shipment",
+        "description": "Creates a new shipment order in the local logistics system.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string"
+            },
+            "destination": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "generate_shipping_label",
+        "description": "Generates a printable barcode label for a new shipment.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "print_format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "print_format"
+          ]
+        }
+      },
+      {
+        "name": "schedule_pickup",
+        "description": "Schedules a courier to pick up the package from a given address.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pickup_address": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "pickup_address"
+          ]
+        }
+      },
+      {
+        "name": "track_shipment",
+        "description": "Gets tracking details for an active parcel.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tracking_code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "tracking_code"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"create_shipment\", \"arguments\": {\"origin\": \"home\", \"destination\": \"office\"}}, {\"name\": \"generate_shipping_label\", \"arguments\": {\"print_format\": \"PDF\"}}, {\"name\": \"schedule_pickup\", \"arguments\": {\"pickup_address\": \"home\"}}]}"
+  },
+  {
+    "query": "'Haftalık Alışveriş' isimli yepyeni bir alışveriş listesi oluştur. Ardından bu listeye domates, peynir ve yumurta ekleyip son olarak da listeyi rehberimdeki 'Eşim' kişisiyle paylaş.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "create_list",
+        "description": "Creates a new named list for tasks or groceries.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "list_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "list_name"
+          ]
+        }
+      },
+      {
+        "name": "add_items_to_list",
+        "description": "Adds one or more string items into an existing named list.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "list_name": {
+              "type": "string"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "list_name",
+            "items"
+          ]
+        }
+      },
+      {
+        "name": "share_list",
+        "description": "Shares the specified list with a mobile contact.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "list_name": {
+              "type": "string"
+            },
+            "contact_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "list_name",
+            "contact_name"
+          ]
+        }
+      },
+      {
+        "name": "delete_list",
+        "description": "Deletes a named list permanently.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "list_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "list_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"create_list\", \"arguments\": {\"list_name\": \"Haftalık Alışveriş\"}}, {\"name\": \"add_items_to_list\", \"arguments\": {\"list_name\": \"Haftalık Alışveriş\", \"items\": [\"domates\", \"peynir\", \"yumurta\"]}}, {\"name\": \"share_list\", \"arguments\": {\"list_name\": \"Haftalık Alışveriş\", \"contact_name\": \"Eşim\"}}]}"
+  },
+  {
+    "query": "Balkondaki sardunyalarım için akıllı sulama sistemini tam 10 dakikalığına çalıştır. Sonrasında günlük bitki bakım günlüğüne bu bitki için 'watering' yapıldığını not al.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "run_irrigation_system",
+        "description": "Activates the smart irrigation system in a specific zone for a set duration.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "zone_name": {
+              "type": "string"
+            },
+            "duration_minutes": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "zone_name",
+            "duration_minutes"
+          ]
+        }
+      },
+      {
+        "name": "log_plant_care",
+        "description": "Logs a specific care action in the daily smart gardening journal.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "plant_name": {
+              "type": "string"
+            },
+            "care_action": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "plant_name",
+            "care_action"
+          ]
+        }
+      },
+      {
+        "name": "check_soil_moisture",
+        "description": "Retrieves the soil moisture level for a given zone.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "zone_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "zone_name"
+          ]
+        }
+      },
+      {
+        "name": "add_fertilizer",
+        "description": "Dispenses fertilizer into the irrigation lines for a zone.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "zone_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "zone_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"run_irrigation_system\", \"arguments\": {\"zone_name\": \"balkon\", \"duration_minutes\": 10}}, {\"name\": \"log_plant_care\", \"arguments\": {\"plant_name\": \"sardunya\", \"care_action\": \"watering\"}}]}"
+  },
+  {
+    "query": "Oteldeyken 304 numaralı odama bir kişilik geleneksel Türk kahvaltısı tabağı siparişi ver. Ayrıca banyoya 2 adet ekstra yüz havlusu iste. İkisi için de görevliye 'Lütfen hızlıca getirin' şeklinde sipariş notu bırakmayı unutma.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "order_room_service",
+        "description": "Orders food items via room service for a hotel guest.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room_number": {
+              "type": "string"
+            },
+            "food_item": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "room_number",
+            "food_item",
+            "quantity"
+          ]
+        }
+      },
+      {
+        "name": "request_hotel_amenities",
+        "description": "Requests extra housekeeping amenities for a specific hotel room.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room_number": {
+              "type": "string"
+            },
+            "amenity": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "room_number",
+            "amenity",
+            "quantity"
+          ]
+        }
+      },
+      {
+        "name": "add_service_request_note",
+        "description": "Attaches a text note to ongoing room service or amenity requests.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room_number": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "room_number",
+            "message"
+          ]
+        }
+      },
+      {
+        "name": "checkout_room",
+        "description": "Checks the guest out of the hotel room.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room_number": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "room_number"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"order_room_service\", \"arguments\": {\"room_number\": \"304\", \"food_item\": \"geleneksel Türk kahvaltısı tabağı\", \"quantity\": 1}}, {\"name\": \"request_hotel_amenities\", \"arguments\": {\"room_number\": \"304\", \"amenity\": \"yüz havlusu\", \"quantity\": 2}}, {\"name\": \"add_service_request_note\", \"arguments\": {\"room_number\": \"304\", \"message\": \"Lütfen hızlıca getirin\"}}]}"
+  },
+  {
+    "query": "Ankara'dan Eskişehir'e yarın (08 Nisan 2026) sabah 08:30'da kalkacak Yüksek Hızlı Tren seferini detaylıca bul ve yetişkin tipi olarak ('adult') kendim için bu seferden 1 adet bilet satın al.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "search_train_schedule",
+        "description": "Searches for intercity train schedules based on origin, destination and time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin_station": {
+              "type": "string"
+            },
+            "destination_station": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "departure_time": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "origin_station",
+            "destination_station",
+            "date",
+            "departure_time"
+          ]
+        }
+      },
+      {
+        "name": "purchase_train_ticket",
+        "description": "Purchases a train ticket for an already searched journey.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "passenger_type": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "passenger_type",
+            "quantity"
+          ]
+        }
+      },
+      {
+        "name": "cancel_train_ticket",
+        "description": "Cancels a purchased train ticket and initiates refund.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pnr_number": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "pnr_number"
+          ]
+        }
+      },
+      {
+        "name": "book_train_seat",
+        "description": "Reserves a targeted seat without purchasing yet.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "seat_number": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "seat_number"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"search_train_schedule\", \"arguments\": {\"origin_station\": \"Ankara\", \"destination_station\": \"Eskişehir\", \"date\": \"2026-04-08\", \"departure_time\": \"08:30\"}}, {\"name\": \"purchase_train_ticket\", \"arguments\": {\"passenger_type\": \"adult\", \"quantity\": 1}}]}"
+  },
+  {
+    "query": "Hisse senedi borsa uygulamasından Apple (AAPL) hissesinin anlık fiyatını sorgula ve fiyattan bağımsız olarak 'market' emri tipiyle hızla 5 adet Apple hissesi satın al.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "get_stock_price",
+        "description": "Retrieves the current market price for a given stock ticker.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticker_symbol": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ticker_symbol"
+          ]
+        }
+      },
+      {
+        "name": "buy_stock",
+        "description": "Executes a buy order for a specified stock.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticker_symbol": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            },
+            "order_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ticker_symbol",
+            "quantity",
+            "order_type"
+          ]
+        }
+      },
+      {
+        "name": "sell_stock",
+        "description": "Executes a sell order for a specified stock.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticker_symbol": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "ticker_symbol",
+            "quantity"
+          ]
+        }
+      },
+      {
+        "name": "set_price_alert",
+        "description": "Sets a push notification alert for when a stock hits a price target.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticker_symbol": {
+              "type": "string"
+            },
+            "target_price": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "ticker_symbol",
+            "target_price"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"get_stock_price\", \"arguments\": {\"ticker_symbol\": \"AAPL\"}}, {\"name\": \"buy_stock\", \"arguments\": {\"ticker_symbol\": \"AAPL\", \"quantity\": 5, \"order_type\": \"market\"}}]}"
+  },
+  {
+    "query": "Kuru temizlemeci uygulaması üzerinden 08 Nisan 2026 sabah 10:00'a evimden teslim alma randevusu oluştur. Ayrıca bu siparişe özel bakım talimatı olarak 'Gömleklerin bol kolalanması gerekiyor.' metnini ekle.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "schedule_laundry_pickup",
+        "description": "Schedules a laundry or dry-cleaning pickup at a given time and address.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            },
+            "pickup_location": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date",
+            "time",
+            "pickup_location"
+          ]
+        }
+      },
+      {
+        "name": "add_laundry_instruction",
+        "description": "Adds special wash or dry-clean instructions to a scheduled pickup.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "care_instruction_text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "care_instruction_text"
+          ]
+        }
+      },
+      {
+        "name": "cancel_laundry_service",
+        "description": "Cancels an existing laundry pickup reservation.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "order_id"
+          ]
+        }
+      },
+      {
+        "name": "track_laundry_order",
+        "description": "Gets the status update of an ongoing laundry order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "order_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"schedule_laundry_pickup\", \"arguments\": {\"date\": \"2026-04-08\", \"time\": \"10:00\", \"pickup_location\": \"ev\"}}, {\"name\": \"add_laundry_instruction\", \"arguments\": {\"care_instruction_text\": \"Gömleklerin bol kolalanması gerekiyor.\"}}]}"
+  },
+  {
+    "query": "'weekend' dönemi için İstanbul'dan İzmir'e uçak bileti fiyatlarını hem Pegasus'tan hem de THY'den ayrı ayrı sorgula. Ayrıca İzmir için cuma ve cumartesi günlerinin genel hava durumu tahminini getir.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "search_pegasus_flights",
+        "description": "Searches for flights specifically on Pegasus Airlines.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string"
+            },
+            "destination": {
+              "type": "string"
+            },
+            "day": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "origin",
+            "destination",
+            "day"
+          ]
+        }
+      },
+      {
+        "name": "search_thy_flights",
+        "description": "Searches for flights specifically on Turkish Airlines.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string"
+            },
+            "destination": {
+              "type": "string"
+            },
+            "day": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "origin",
+            "destination",
+            "day"
+          ]
+        }
+      },
+      {
+        "name": "get_weather_forecast",
+        "description": "Gets the weather forecast for a specified city and day.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string"
+            },
+            "days_list": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "city",
+            "days_list"
+          ]
+        }
+      },
+      {
+        "name": "book_flight",
+        "description": "Books a selected flight.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "flight_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "flight_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"search_pegasus_flights\", \"arguments\": {\"origin\": \"İstanbul\", \"destination\": \"İzmir\", \"day\": \"weekend\"}}, {\"name\": \"search_thy_flights\", \"arguments\": {\"origin\": \"İstanbul\", \"destination\": \"İzmir\", \"day\": \"weekend\"}}, {\"name\": \"get_weather_forecast\", \"arguments\": {\"city\": \"İzmir\", \"days_list\": [\"Friday\", \"Saturday\"]}}]}"
+  },
+  {
+    "query": "Bugün bana gelen fakat henüz okunmamış e-postaların 'today' (bugün) filtresi ile kısa bir özetini çıkar. Çıkan bu raporu yöneticime ('manager') özel mesaj olarak gönderip mesaj içeriğine \"Here is the summary of today's unread emails.\" detayları yazdır; aynı şirketteki genel duyuru kanalına ise 'general announcements' kanalına 'Günlük rapor iletildi' diye bildir.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "summarize_unread_emails",
+        "description": "Fetches and summarizes all unread emails in the inbox.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "timeframe": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "timeframe"
+          ]
+        }
+      },
+      {
+        "name": "send_slack_direct_message",
+        "description": "Sends a direct message to a specific user on Slack.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipient": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipient",
+            "message"
+          ]
+        }
+      },
+      {
+        "name": "send_slack_channel_message",
+        "description": "Posts a message to a public or private Slack channel.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "channel_name": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "channel_name",
+            "message"
+          ]
+        }
+      },
+      {
+        "name": "mark_emails_read",
+        "description": "Marks the inbox emails as read.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"summarize_unread_emails\", \"arguments\": {\"timeframe\": \"today\"}}, {\"name\": \"send_slack_direct_message\", \"arguments\": {\"recipient\": \"manager\", \"message\": \"Here is the summary of today's unread emails.\"}}, {\"name\": \"send_slack_channel_message\", \"arguments\": {\"channel_name\": \"general announcements\", \"message\": \"Günlük rapor iletildi\"}}]}"
+  },
+  {
+    "query": "Evden çıkıyorum, birkaç işlemi aynı anda yap. Tüm odalardaki açık ışıkları söndür, salondaki klimayı kapat, temizlik için robot süpürgeyi çalıştır ve en son 'outer steel door' (dış çelik kapı) için kilidi devrye al.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "turn_off_all_lights",
+        "description": "Turns off all smart lights in the entire house.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "turn_off_ac",
+        "description": "Turns off the air conditioner in a given room.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "room": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "room"
+          ]
+        }
+      },
+      {
+        "name": "start_robot_vacuum",
+        "description": "Starts the cleaning cycle for the robot vacuum.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "lock_door",
+        "description": "Engages the smart lock on a specified door.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "door_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "door_type"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"turn_off_all_lights\", \"arguments\": {}}, {\"name\": \"turn_off_ac\", \"arguments\": {\"room\": \"salon\"}}, {\"name\": \"start_robot_vacuum\", \"arguments\": {}}, {\"name\": \"lock_door\", \"arguments\": {\"door_type\": \"outer steel door\"}}]}"
+  },
+  {
+    "query": "Netflix veri tabanında arama yap; IMDB puanı 8.0'in üzerinde olan 2024 yapımı 'action' filmleri ile 2023 yapımı 'science fiction' filmlerini iki ayrı arama parametresi göndererek listele.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "search_movies",
+        "description": "Searches for movies on a streaming platform based on complex filters.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "genre": {
+              "type": "string"
+            },
+            "min_imdb_score": {
+              "type": "number"
+            },
+            "release_year": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "genre",
+            "min_imdb_score",
+            "release_year"
+          ]
+        }
+      },
+      {
+        "name": "play_movie",
+        "description": "Starts playing a movie.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "movie_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "movie_id"
+          ]
+        }
+      },
+      {
+        "name": "add_to_watchlist",
+        "description": "Adds a movie to the user's personal watchlist.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "movie_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "movie_id"
+          ]
+        }
+      },
+      {
+        "name": "rate_movie",
+        "description": "Submits a rating for a watched movie.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "movie_name": {
+              "type": "string"
+            },
+            "rating": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "movie_name",
+            "rating"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"search_movies\", \"arguments\": {\"genre\": \"action\", \"min_imdb_score\": 8.0, \"release_year\": 2024}}, {\"name\": \"search_movies\", \"arguments\": {\"genre\": \"science fiction\", \"min_imdb_score\": 8.0, \"release_year\": 2023}}]}"
+  },
+  {
+    "query": "Uygulamadan 'last month' maaş bordrosunu 'payslip.pdf' dosyası olarak dışa aktar, ardından bu 'payslip.pdf' belgeyi bilgisayarımdaki 'Muhasebe' klasörüne taşı ve son olarak 'Human Resources' birimine bordroyu aldığıma dair 'Payslip Received' konulu bir bilgi e-postası yolla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "export_payslip",
+        "description": "Exports the latest payslip from the HR system.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "format_type": {
+              "type": "string"
+            },
+            "period": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "format_type",
+            "period"
+          ]
+        }
+      },
+      {
+        "name": "move_file",
+        "description": "Moves a local file from one directory to another.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "source_file": {
+              "type": "string"
+            },
+            "target_folder": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "source_file",
+            "target_folder"
+          ]
+        }
+      },
+      {
+        "name": "send_email",
+        "description": "Sends an email message to a specified department or user.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipient": {
+              "type": "string"
+            },
+            "subject": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipient",
+            "subject"
+          ]
+        }
+      },
+      {
+        "name": "print_document",
+        "description": "Sends a document to a connected printer.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "document_path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "document_path"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"export_payslip\", \"arguments\": {\"format_type\": \"PDF\", \"period\": \"last month\"}}, {\"name\": \"move_file\", \"arguments\": {\"source_file\": \"payslip.pdf\", \"target_folder\": \"Muhasebe\"}}, {\"name\": \"send_email\", \"arguments\": {\"recipient\": \"Human Resources\", \"subject\": \"Payslip Received\"}}]}"
+  },
+  {
+    "query": "Jira proje yönetim sistemine gir; 'Tasarım Aşaması' biletinin durumunu iptal yerine 'completed' olarak güncelle, 'Geliştirme' isimli biletin son tarihini 25 Mayıs 2026 olarak değiştir ve son olarak projeye çalışma arkadaşımız 'Ahmet'i yeni üye sıfatıyla davet et.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "update_ticket_status",
+        "description": "Changes the workflow status of an existing project ticket.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticket_name": {
+              "type": "string"
+            },
+            "new_status": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ticket_name",
+            "new_status"
+          ]
+        }
+      },
+      {
+        "name": "update_ticket_deadline",
+        "description": "Updates the due date of a specified project ticket.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticket_name": {
+              "type": "string"
+            },
+            "new_date": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ticket_name",
+            "new_date"
+          ]
+        }
+      },
+      {
+        "name": "add_project_member",
+        "description": "Invites a new member to the ongoing project board.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "member_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "member_name"
+          ]
+        }
+      },
+      {
+        "name": "create_new_ticket",
+        "description": "Creates a new ticket in the project management system.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"update_ticket_status\", \"arguments\": {\"ticket_name\": \"Tasarım Aşaması\", \"new_status\": \"completed\"}}, {\"name\": \"update_ticket_deadline\", \"arguments\": {\"ticket_name\": \"Geliştirme\", \"new_date\": \"2026-05-25\"}}, {\"name\": \"add_project_member\", \"arguments\": {\"member_name\": \"Ahmet\"}}]}"
+  },
+  {
+    "query": "Web sitemizin 'last 1 month' süresindeki genel ziyaretçi trafiği istatistiklerini çek, ardından en çok tıklanan 3 alt sayfanın listesini çıkar ve bu verileri harmanlayarak 'marketing team' için otomatik bir sunum dosyası oluştur.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "get_traffic_analytics",
+        "description": "Fetches general website traffic data for a specified time period.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "time_period": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "time_period"
+          ]
+        }
+      },
+      {
+        "name": "get_top_pages",
+        "description": "Retrieves the most visited pages with a specified limit.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ]
+        }
+      },
+      {
+        "name": "generate_presentation",
+        "description": "Generates a slide presentation using aggregated input data.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_audience": {
+              "type": "string"
+            },
+            "data_sources": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "target_audience",
+            "data_sources"
+          ]
+        }
+      },
+      {
+        "name": "export_to_csv",
+        "description": "Exports a dataset into a CSV file format.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "dataset_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "dataset_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"get_traffic_analytics\", \"arguments\": {\"time_period\": \"last 1 month\"}}, {\"name\": \"get_top_pages\", \"arguments\": {\"limit\": 3}}, {\"name\": \"generate_presentation\", \"arguments\": {\"target_audience\": \"marketing team\", \"data_sources\": [\"traffic details\", \"top pages\"]}}]}"
+  },
+  {
+    "query": "Rehberimde 'En İyi Arkadaşlarım' grubunda bulunan kişilere bu perşembe ('Thursday') akşamı için bir 'dinner' takvim daveti yolla. Paralel olarak 'Italian' tipi favori restoranımızda o akşam için 4 kişilik bir masa ayırt.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "send_calendar_invite",
+        "description": "Sends an event calendar invite to a group or specific contacts.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "contact_group": {
+              "type": "string"
+            },
+            "day": {
+              "type": "string"
+            },
+            "event_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "contact_group",
+            "day",
+            "event_type"
+          ]
+        }
+      },
+      {
+        "name": "book_restaurant",
+        "description": "Makes a dining reservation at a specified restaurant.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "cuisine_type": {
+              "type": "string"
+            },
+            "people_count": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "cuisine_type",
+            "people_count"
+          ]
+        }
+      },
+      {
+        "name": "cancel_reservation",
+        "description": "Cancels a booked restaurant reservation.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "reservation_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "reservation_id"
+          ]
+        }
+      },
+      {
+        "name": "find_restaurant",
+        "description": "Searches for a restaurant by type and ratings.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "style": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "style"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"send_calendar_invite\", \"arguments\": {\"contact_group\": \"En İyi Arkadaşlarım\", \"day\": \"Thursday\", \"event_type\": \"dinner\"}}, {\"name\": \"book_restaurant\", \"arguments\": {\"cuisine_type\": \"Italian\", \"people_count\": 4}}]}"
+  },
+  {
+    "query": "Sunucudaki sistem log dosyalarında son 24 saate ait olan hataları (ERROR) tespit et. Bulduğun bu hataları derleyip 'critical' seviyesinde acil durum raporu oluştur ve ardından hemen 'system administrator' rolündeki yetkiliye 'critical error' tipi mesaj uyarısı (SMS) olarak gönder.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "search_logs",
+        "description": "Searches server log files based on keywords and timeframes.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "keyword": {
+              "type": "string"
+            },
+            "timeframe_hours": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "keyword",
+            "timeframe_hours"
+          ]
+        }
+      },
+      {
+        "name": "generate_error_report",
+        "description": "Compiles raw error logs into a readable summary report.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "urgency_level": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "urgency_level"
+          ]
+        }
+      },
+      {
+        "name": "send_sms_alert",
+        "description": "Sends a critical alert via SMS to IT personnel.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipient_role": {
+              "type": "string"
+            },
+            "alert_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipient_role",
+            "alert_type"
+          ]
+        }
+      },
+      {
+        "name": "restart_service",
+        "description": "Restarts a backend service or daemon.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "service_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "service_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"search_logs\", \"arguments\": {\"keyword\": \"ERROR\", \"timeframe_hours\": 24}}, {\"name\": \"generate_error_report\", \"arguments\": {\"urgency_level\": \"critical\"}}, {\"name\": \"send_sms_alert\", \"arguments\": {\"recipient_role\": \"system administrator\", \"alert_type\": \"critical error\"}}]}"
+  },
+  {
+    "query": "Bankacılık sistemine bağlanıp kredi kartımın 'full balance' (güncel toplam) borcunu öğren, öğrendiğin bu bilginin tamamını 'checking account' üzerinden düşerek öde. Bütün bu işler bitince kişisel not uygulamamdaki 'Giderler' başlığına 'Kredi kartı işlemi kapandı.' ibaresini yeni bir satır ekle.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "get_credit_card_debt",
+        "description": "Queries the bank for the current total outstanding balance of a credit card.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "pay_credit_card",
+        "description": "Pays off the credit card utilizing funds from a checking account.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "payment_type": {
+              "type": "string"
+            },
+            "source_account": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "payment_type",
+            "source_account"
+          ]
+        }
+      },
+      {
+        "name": "append_to_note",
+        "description": "Appends a new text entry to a specified document or note in the personal workspace.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "note_title": {
+              "type": "string"
+            },
+            "content_to_add": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "note_title",
+            "content_to_add"
+          ]
+        }
+      },
+      {
+        "name": "lock_credit_card",
+        "description": "Temporarily locks a credit card to prevent transactions.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "reason"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"get_credit_card_debt\", \"arguments\": {}}, {\"name\": \"pay_credit_card\", \"arguments\": {\"payment_type\": \"full balance\", \"source_account\": \"checking account\"}}, {\"name\": \"append_to_note\", \"arguments\": {\"note_title\": \"Giderler\", \"content_to_add\": \"Kredi kartı işlemi kapandı.\"}}]}"
+  },
+  {
+    "query": "Apartman yönetim sisteminden 'last 1 month' için durumu 'completed' olan ve aidat ('dues') kategorisindeki ödemeleri sorgula. Çıkan sonucu resmi 'Monthly Dues Statement' başlığıyla ekstresine dönüştür ve rapor olarak doğrudan aidat@yonetim.com adresine 'Completed Dues Report' (E-posta Konusu) olarak yolla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "get_transactions",
+        "description": "Retrieves transactions from the building management system.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "timeframe": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "timeframe",
+            "status",
+            "category"
+          ]
+        }
+      },
+      {
+        "name": "generate_pdf_statement",
+        "description": "Converts transaction data into a formal PDF document.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "document_title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "document_title"
+          ]
+        }
+      },
+      {
+        "name": "send_email",
+        "description": "Sends an email to a specified recipient.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipient_email": {
+              "type": "string"
+            },
+            "subject": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipient_email",
+            "subject"
+          ]
+        }
+      },
+      {
+        "name": "download_invoice",
+        "description": "Downloads the official invoice for a transaction.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "transaction_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "transaction_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"get_transactions\", \"arguments\": {\"timeframe\": \"last 1 month\", \"status\": \"completed\", \"category\": \"dues\"}}, {\"name\": \"generate_pdf_statement\", \"arguments\": {\"document_title\": \"Monthly Dues Statement\"}}, {\"name\": \"send_email\", \"arguments\": {\"recipient_email\": \"aidat@yonetim.com\", \"subject\": \"Completed Dues Report\"}}]}"
+  },
+  {
+    "query": "Çocuklarımın okul kayıt yenilemeleri için; hem 'Ali' hem de 'Ayşe' adına ayrı ayrı okul sisteminden yeni dönem kaydını başlat ve her ikisi için de işlemi 'credit card' ödeme yöntemiyle 1000'er TL taksit çekerek yap.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "start_enrollment",
+        "description": "Initiates school enrollment for a specific student.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "student_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "student_name"
+          ]
+        }
+      },
+      {
+        "name": "pay_tuition",
+        "description": "Processes a tuition payment for a student.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "student_name": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "number"
+            },
+            "payment_method": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "student_name",
+            "amount",
+            "payment_method"
+          ]
+        }
+      },
+      {
+        "name": "request_transcript",
+        "description": "Requests the official school transcript.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "student_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "student_name"
+          ]
+        }
+      },
+      {
+        "name": "send_parent_notification",
+        "description": "Sends a notification SMS to parents about enrollment.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "student_name": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "student_name",
+            "message"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"start_enrollment\", \"arguments\": {\"student_name\": \"Ali\"}}, {\"name\": \"start_enrollment\", \"arguments\": {\"student_name\": \"Ayşe\"}}, {\"name\": \"pay_tuition\", \"arguments\": {\"student_name\": \"Ali\", \"amount\": 1000, \"payment_method\": \"credit card\"}}, {\"name\": \"pay_tuition\", \"arguments\": {\"student_name\": \"Ayşe\", \"amount\": 1000, \"payment_method\": \"credit card\"}}]}"
+  },
+  {
+    "query": "Tedarik uygulamasından sipariş listesini oluştur; 50 kutu 'blue pen' mavi kalem, 20 kutu 'red pen' kırmızı kalem ve 150 adet 'blank notebook' defter siparişi geç. Ardından tüm bu kargo sepeti için teslimat önceliğini 'Urgent' olarak ayarla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "order_supply",
+        "description": "Adds an item order to the current supply cart.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "item_name": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "item_name",
+            "quantity"
+          ]
+        }
+      },
+      {
+        "name": "set_shipping_priority",
+        "description": "Updates the shipping priority of the current active cart.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "priority_level": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "priority_level"
+          ]
+        }
+      },
+      {
+        "name": "cancel_order",
+        "description": "Cancels an ongoing supply order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order_number": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "order_number"
+          ]
+        }
+      },
+      {
+        "name": "get_inventory_status",
+        "description": "Checks the stock of a given supply item.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "item_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "item_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"order_supply\", \"arguments\": {\"item_name\": \"blue pen\", \"quantity\": 50}}, {\"name\": \"order_supply\", \"arguments\": {\"item_name\": \"red pen\", \"quantity\": 20}}, {\"name\": \"order_supply\", \"arguments\": {\"item_name\": \"blank notebook\", \"quantity\": 150}}, {\"name\": \"set_shipping_priority\", \"arguments\": {\"priority_level\": \"Urgent\"}}]}"
+  },
+  {
+    "query": "'yesterday evening' siparişime verdiğim 1 yıldızlı değerlendirmeyi tamamen sil ve onun yerine sistemi üzerinden 5 yıldızlı ve 'Harikaydı, çok sıcak geldi' yazan yeni bir yorum oluştur.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "delete_review",
+        "description": "Removes an existing review for a previous order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "timeframe": {
+              "type": "string"
+            },
+            "rating_to_remove": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "timeframe"
+          ]
+        }
+      },
+      {
+        "name": "create_review",
+        "description": "Submits a new rating and comment for a restaurant or order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "rating": {
+              "type": "integer"
+            },
+            "comment": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "rating",
+            "comment"
+          ]
+        }
+      },
+      {
+        "name": "tip_driver",
+        "description": "Adds a tip amount to the driver for a past order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "amount"
+          ]
+        }
+      },
+      {
+        "name": "get_past_orders",
+        "description": "Retrieves the list of previous orders.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"delete_review\", \"arguments\": {\"timeframe\": \"yesterday evening\", \"rating_to_remove\": 1}}, {\"name\": \"create_review\", \"arguments\": {\"rating\": 5, \"comment\": \"Harikaydı, çok sıcak geldi\"}}]}"
+  },
+  {
+    "query": "Klinik randevu sisteminden 14 Nisan sabah 10:00 için doktor boşluğu var mı diye kontrol et, ardından doğrudan o saate 'dental scaling' randevusunu oluşturup 'Dental scaling appointment' başlığıyla kişisel takvimime de kaydet.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "check_availability",
+        "description": "Checks if the clinic has free slots at a given date and time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "book_appointment",
+        "description": "Books a specific medical service.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "service": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "service",
+            "date",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "add_to_calendar",
+        "description": "Adds a registered appointment to the personal calendar.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "event_title": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event_title",
+            "date",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "cancel_appointment",
+        "description": "Cancels an existing clinic appointment.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "booking_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "booking_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"check_availability\", \"arguments\": {\"date\": \"2026-04-14\", \"time\": \"10:00\"}}, {\"name\": \"book_appointment\", \"arguments\": {\"service\": \"dental scaling\", \"date\": \"2026-04-14\", \"time\": \"10:00\"}}, {\"name\": \"add_to_calendar\", \"arguments\": {\"event_title\": \"Dental scaling appointment\", \"date\": \"2026-04-14\", \"time\": \"10:00\"}}]}"
+  },
+  {
+    "query": "Akıllı güvenlik sistemine bağlan; bahçe kameralarının 'motion detection' modunu aktif et, ön kapı sensörünün algılama hassasiyetini 'maximum' seviyesine çıkar ve son olarak evin genel alarmını devreye sok.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "enable_camera_recording",
+        "description": "Activates the recording mode for security cameras in a specific location.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string"
+            },
+            "mode": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "location",
+            "mode"
+          ]
+        }
+      },
+      {
+        "name": "set_sensor_sensitivity",
+        "description": "Changes the detection sensitivity of a given security sensor.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sensor_location": {
+              "type": "string"
+            },
+            "sensitivity_level": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "sensor_location",
+            "sensitivity_level"
+          ]
+        }
+      },
+      {
+        "name": "arm_alarm_system",
+        "description": "Arms the general house alarm system.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "disable_camera_recording",
+        "description": "Turns off the camera recordings for a specific location.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "location"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"enable_camera_recording\", \"arguments\": {\"location\": \"bahçe\", \"mode\": \"motion detection\"}}, {\"name\": \"set_sensor_sensitivity\", \"arguments\": {\"sensor_location\": \"ön kapı\", \"sensitivity_level\": \"maximum\"}}, {\"name\": \"arm_alarm_system\", \"arguments\": {}}]}"
+  },
+  {
+    "query": "'latest email from German supplier' e-postasını bulup içeriğini 'Turkish' diline çevir. Çevrilen bu ('translated email content') metni WhatsApp üzerinden 'assistant' alıcısına yolla ve o orijinal 'latest email from German supplier' mailini de arşive taşı.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "translate_email",
+        "description": "Translates the content of a specific email document.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "email_identifier": {
+              "type": "string"
+            },
+            "target_language": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email_identifier",
+            "target_language"
+          ]
+        }
+      },
+      {
+        "name": "send_whatsapp",
+        "description": "Sends a message via WhatsApp to a trusted contact.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "contact_role": {
+              "type": "string"
+            },
+            "message_content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "contact_role",
+            "message_content"
+          ]
+        }
+      },
+      {
+        "name": "archive_email",
+        "description": "Moves a specified email to the archive folder.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "email_identifier": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email_identifier"
+          ]
+        }
+      },
+      {
+        "name": "delete_email",
+        "description": "Moves an email to the trash folder.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "email_identifier": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email_identifier"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"translate_email\", \"arguments\": {\"email_identifier\": \"latest email from German supplier\", \"target_language\": \"Turkish\"}}, {\"name\": \"send_whatsapp\", \"arguments\": {\"contact_role\": \"assistant\", \"message_content\": \"translated email content\"}}, {\"name\": \"archive_email\", \"arguments\": {\"email_identifier\": \"latest email from German supplier\"}}]}"
+  },
+  {
+    "query": "Bulut sistemindeki '2026 Bütçesi' klasörünün kullanım izinlerini değiştir; mevcut 'working team' grubuna sadece görüntüleme ('view only') yetkisi ver ve projeye yeni katılan 'ali@sirket.com' e-posta adresine ise 'editor' yetkisiyle davet linki gönder.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "update_folder_permissions",
+        "description": "Modifies the access roles for a specific cloud folder.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "folder_name": {
+              "type": "string"
+            },
+            "target_group": {
+              "type": "string"
+            },
+            "permission_level": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "folder_name",
+            "target_group",
+            "permission_level"
+          ]
+        }
+      },
+      {
+        "name": "invite_collaborator",
+        "description": "Invites a new user directly to a workspace with an assigned role.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "email_address": {
+              "type": "string"
+            },
+            "assigned_role": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email_address",
+            "assigned_role"
+          ]
+        }
+      },
+      {
+        "name": "remove_collaborator",
+        "description": "Revokes a user's access from the workspace.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "email_address": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email_address"
+          ]
+        }
+      },
+      {
+        "name": "create_folder",
+        "description": "Creates a new cloud folder.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "folder_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "folder_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"update_folder_permissions\", \"arguments\": {\"folder_name\": \"2026 Bütçesi\", \"target_group\": \"working team\", \"permission_level\": \"view only\"}}, {\"name\": \"invite_collaborator\", \"arguments\": {\"email_address\": \"ali@sirket.com\", \"assigned_role\": \"editor\"}}]}"
+  },
+  {
+    "query": "E-ticaret sitesinde hem 'oyuncu klavyesi' hem de 'ergonomik fare' için farklı aramalar yap. Yalnızca 4 yıldız ve üzeri olan, kargo bedava teslimatı sunan ürünleri filtreleyerek adı 'Kurulum' olan bir favori listesine kaydet.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "search_products",
+        "description": "Searches for products applying certain ratings and shipping constraints.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "search_term": {
+              "type": "string"
+            },
+            "min_rating": {
+              "type": "integer"
+            },
+            "free_shipping": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "search_term",
+            "min_rating",
+            "free_shipping"
+          ]
+        }
+      },
+      {
+        "name": "create_wishlist",
+        "description": "Creates a new favorites wishlist with gathered search items.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "list_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "list_name"
+          ]
+        }
+      },
+      {
+        "name": "add_to_cart",
+        "description": "Places an item directly in the shopping cart.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "product_id"
+          ]
+        }
+      },
+      {
+        "name": "checkout_cart",
+        "description": "Proceeds to checkout the shopping cart.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "payment_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "payment_type"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"search_products\", \"arguments\": {\"search_term\": \"oyuncu klavyesi\", \"min_rating\": 4, \"free_shipping\": true}}, {\"name\": \"search_products\", \"arguments\": {\"search_term\": \"ergonomik fare\", \"min_rating\": 4, \"free_shipping\": true}}, {\"name\": \"create_wishlist\", \"arguments\": {\"list_name\": \"Kurulum\"}}]}"
+  },
+  {
+    "query": "Eski cep telefonu numaramla (05550001122) oluşturulmuş olan 'music' aboneliğini tamamen iptal et. Hemen ardından yeni numaram olan 05321112233 ile 'Family' planıyla yine 'music' aboneliği başlat.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "cancel_subscription",
+        "description": "Cancels an ongoing media subscription connected to a phone number.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "phone_number": {
+              "type": "string"
+            },
+            "service_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "phone_number",
+            "service_type"
+          ]
+        }
+      },
+      {
+        "name": "create_subscription",
+        "description": "Starts a new subscription plan with specific tier details.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "phone_number": {
+              "type": "string"
+            },
+            "service_type": {
+              "type": "string"
+            },
+            "plan_tier": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "phone_number",
+            "service_type",
+            "plan_tier"
+          ]
+        }
+      },
+      {
+        "name": "change_billing_method",
+        "description": "Updates the credit card details of a subscription.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "phone_number": {
+              "type": "string"
+            },
+            "card_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "phone_number",
+            "card_id"
+          ]
+        }
+      },
+      {
+        "name": "pause_subscription",
+        "description": "Temporarily halts a subscription for a given number of months.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "phone_number": {
+              "type": "string"
+            },
+            "months": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "phone_number",
+            "months"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"cancel_subscription\", \"arguments\": {\"phone_number\": \"05550001122\", \"service_type\": \"music\"}}, {\"name\": \"create_subscription\", \"arguments\": {\"phone_number\": \"05321112233\", \"service_type\": \"music\", \"plan_tier\": \"Family\"}}]}"
+  },
+  {
+    "query": "Önümüzdeki 'Friday' (cuma) için bana en az 4 yıldızlı, kahvaltısı olan ve şehir merkezine 5 km'den daha yakın konumlu 3 farklı otel listele. Bulduğun bu otel seçeneklerini detaylı karşılaştırma tablosu ('detailed table') haline getirip WhatsApp uygulaması üzerinden eşime 'comparison chart' mesajı olarak at.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "search_hotels",
+        "description": "Searches for matching hotel list according to distance, stars, and amenities.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "day": {
+              "type": "string"
+            },
+            "min_stars": {
+              "type": "integer"
+            },
+            "max_distance_km": {
+              "type": "number"
+            },
+            "includes_breakfast": {
+              "type": "boolean"
+            },
+            "limit": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "day",
+            "min_stars",
+            "max_distance_km",
+            "includes_breakfast",
+            "limit"
+          ]
+        }
+      },
+      {
+        "name": "generate_comparison_menu",
+        "description": "Generates a side-by-side comparison chart for provided accommodation options.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "format"
+          ]
+        }
+      },
+      {
+        "name": "send_whatsapp",
+        "description": "Sends a message or file to a specific contact on WhatsApp.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "contact_name": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "contact_name",
+            "content"
+          ]
+        }
+      },
+      {
+        "name": "book_hotel",
+        "description": "Books a desired hotel room.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "hotel_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "hotel_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"search_hotels\", \"arguments\": {\"day\": \"Friday\", \"min_stars\": 4, \"max_distance_km\": 5.0, \"includes_breakfast\": true, \"limit\": 3}}, {\"name\": \"generate_comparison_menu\", \"arguments\": {\"format\": \"detailed table\"}}, {\"name\": \"send_whatsapp\", \"arguments\": {\"contact_name\": \"eşim\", \"content\": \"comparison chart\"}}]}"
+  },
+  {
+    "query": "Ankara'dan Antalya'ya olan karayolu rotasının tahmini otoyol ve gişe geçiş ücretini sorgula. Sonucunda karşıma çıkan tahmini tutar kadar ('estimated highway fee') kredi kartımdan otomatik HGS hesabı bakiye yüklemesi yap ve işlemin onay dekontunu PDF olarak vergi klasörüme arşivle.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "estimate_toll_fee",
+        "description": "Calculates the estimated toll and highway fees for an entire driving route.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "string"
+            },
+            "destination": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "origin",
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "load_toll_balance",
+        "description": "Loads balance to the highway pass system (HGS) via a payment method.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "payment_source": {
+              "type": "string"
+            },
+            "amount_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "payment_source",
+            "amount_type"
+          ]
+        }
+      },
+      {
+        "name": "archive_receipt",
+        "description": "Saves and archives a transaction receipt into a specific personal local folder.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "type": "string"
+            },
+            "folder_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "format",
+            "folder_name"
+          ]
+        }
+      },
+      {
+        "name": "get_hgs_balance",
+        "description": "Retrieves the current balance of the highway pass.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"estimate_toll_fee\", \"arguments\": {\"origin\": \"Ankara\", \"destination\": \"Antalya\"}}, {\"name\": \"load_toll_balance\", \"arguments\": {\"payment_source\": \"kredi kartı\", \"amount_type\": \"estimated highway fee\"}}, {\"name\": \"archive_receipt\", \"arguments\": {\"format\": \"PDF\", \"folder_name\": \"vergi\"}}]}"
+  },
+  {
+    "query": "E-devlet sistemi üzerinden resmi, imzalı ve güncel bir 'yerleşim yeri belgesi'ni (İkametgah) PDF formatında doğrudan cihazıma oluştur. Ardından bu indirdiğin resmi 'residence document' referans belgesini 'banking' hedefine yönelterek destek talebi aç.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "generate_residence_document",
+        "description": "Generates a certified official proof of residence document from the government gateway.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "fetch_format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "fetch_format"
+          ]
+        }
+      },
+      {
+        "name": "request_address_update",
+        "description": "Opens a support ticket with a target institution to update physical address using a provided proof.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_system": {
+              "type": "string"
+            },
+            "proof_document": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_system",
+            "proof_document"
+          ]
+        }
+      },
+      {
+        "name": "check_ticket_status",
+        "description": "Checks the status of an ongoing support ticket.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticket_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ticket_id"
+          ]
+        }
+      },
+      {
+        "name": "download_criminal_record",
+        "description": "Downloads the police clearance record from the government system.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "format"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"generate_residence_document\", \"arguments\": {\"fetch_format\": \"PDF\"}}, {\"name\": \"request_address_update\", \"arguments\": {\"target_system\": \"banking\", \"proof_document\": \"residence document\"}}]}"
+  },
+  {
+    "query": "Telefonumun 'Konser' adlı fotoğraf albümünde yer alan sadece son bir haftadaki ('last 1 week') fotoğrafları tara ve bul. Sistemin çektiği (fetched photos) bu resimleri kullanıp müzikli bir 'slideshow video' dönüştür, en son hiç beklemeden Instagram hesabımda bunu öne çıkan gönderi içeriği olarak ('slideshow video') yayınla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "get_photos_from_album",
+        "description": "Fetches pictures from a particular album within a specific timeframe.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "album_name": {
+              "type": "string"
+            },
+            "timeframe": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "album_name",
+            "timeframe"
+          ]
+        }
+      },
+      {
+        "name": "create_slideshow",
+        "description": "Compiles a series of inputs/pictures into a video slideshow.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "input_source": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "input_source"
+          ]
+        }
+      },
+      {
+        "name": "share_instagram_story",
+        "description": "Posts a photo or video to an Instagram story, with highlight properties.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "content": {
+              "type": "string"
+            },
+            "as_highlight": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "content",
+            "as_highlight"
+          ]
+        }
+      },
+      {
+        "name": "delete_photo",
+        "description": "Deletes a specified photo from the library.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "photo_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "photo_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"get_photos_from_album\", \"arguments\": {\"album_name\": \"Konser\", \"timeframe\": \"last 1 week\"}}, {\"name\": \"create_slideshow\", \"arguments\": {\"input_source\": \"fetched photos\"}}, {\"name\": \"share_instagram_story\", \"arguments\": {\"content\": \"slideshow video\", \"as_highlight\": true}}]}"
+  },
+  {
+    "query": "İndirim takip uygulamasında 'Dyson V15' süpürge için fiyat alarmı kur (şart: fiyat 15.000 TL altına düştüğünde). 'price alert hit' koşulu gerçekleştiği an 'saved credit card' yöntemini ve adres olarak 'saved address' bilgisini kullanarak satın alma işlemi yapan (trigger) akıllı özelliği tanımla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "set_price_alert",
+        "description": "Configures a background price drop alert for a specific product.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string"
+            },
+            "target_price_threshold": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "product_name",
+            "target_price_threshold"
+          ]
+        }
+      },
+      {
+        "name": "add_auto_purchase_trigger",
+        "description": "Sets a conditional script to automatically buy a product when a trigger occurs.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string"
+            },
+            "trigger_condition": {
+              "type": "string"
+            },
+            "payment_method": {
+              "type": "string"
+            },
+            "address_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "product_name",
+            "trigger_condition",
+            "payment_method",
+            "address_type"
+          ]
+        }
+      },
+      {
+        "name": "remove_trigger",
+        "description": "Removes an active macro or purchase trigger.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "trigger_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "trigger_id"
+          ]
+        }
+      },
+      {
+        "name": "check_product_stock",
+        "description": "Checks the availability of stock for a product.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "product_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "product_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"set_price_alert\", \"arguments\": {\"product_name\": \"Dyson V15\", \"target_price_threshold\": 15000}}, {\"name\": \"add_auto_purchase_trigger\", \"arguments\": {\"product_name\": \"Dyson V15\", \"trigger_condition\": \"price alert hit\", \"payment_method\": \"saved credit card\", \"address_type\": \"saved address\"}}]}"
+  },
+  {
+    "query": "Akıllı saatimdeki sensörlerden 'last 1 week' dönemine ait 'sleep quality' verisini ve 'step count' istatistiklerini iki ayrı izleme işlemiyle çek. Bu verileri harmanlayıp haftalık bir rapor oluştur ve bu belgeyi 'dietitian' ünvanına özel olarak mail at.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "fetch_health_data",
+        "description": "Fetches a specific health metric from the smartwatch API.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "metric_type": {
+              "type": "string"
+            },
+            "timeframe": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "metric_type",
+            "timeframe"
+          ]
+        }
+      },
+      {
+        "name": "generate_health_score",
+        "description": "Aggregates diverse health parameters into a single score and report.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "data_sources": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "data_sources"
+          ]
+        }
+      },
+      {
+        "name": "email_report",
+        "description": "Blasts a generated report to an individual's address.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipient_role": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipient_role"
+          ]
+        }
+      },
+      {
+        "name": "start_workout_session",
+        "description": "Starts tracking a live workout session on the watch.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "activity_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "activity_type"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"fetch_health_data\", \"arguments\": {\"metric_type\": \"sleep quality\", \"timeframe\": \"last 1 week\"}}, {\"name\": \"fetch_health_data\", \"arguments\": {\"metric_type\": \"step count\", \"timeframe\": \"last 1 week\"}}, {\"name\": \"generate_health_score\", \"arguments\": {\"data_sources\": [\"sleep stats\", \"step stats\"]}}, {\"name\": \"email_report\", \"arguments\": {\"recipient_role\": \"dietitian\"}}]}"
+  },
+  {
+    "query": "Şu an 'mobile phone' cihazımı kaybettiğimden şüpheleniyorum; hiç beklemeden cihazı kayıp moduna alıp uzaktan kilitle, bankacılık uygulamaları dahil arka plandaki tüm aktif oturumlarımdan cihazı çıkar ve sistemin ağ üzerinden alabildiği son konumu 'backup email' hedefine yolla.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "enable_lost_mode",
+        "description": "Locks the device remotely and logs it as missing.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_device": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_device"
+          ]
+        }
+      },
+      {
+        "name": "force_logout_all_sessions",
+        "description": "Forces logouts on all authorized applications globally.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "send_last_location",
+        "description": "Triangulates and sends the GPS endpoint to a recovery channel.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destination": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destination"
+          ]
+        }
+      },
+      {
+        "name": "wipe_device_data",
+        "description": "Performs a remote factory reset on the device erasing all contents.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_device": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_device"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"enable_lost_mode\", \"arguments\": {\"target_device\": \"mobile phone\"}}, {\"name\": \"force_logout_all_sessions\", \"arguments\": {}}, {\"name\": \"send_last_location\", \"arguments\": {\"destination\": \"backup email\"}}]}"
+  },
+  {
+    "query": "Mail kutumda bugün bir müşteriden gelen ve 'complaint' kelimelerini içeren uzun 'English' e-postayı arayıp bul. 'professional and apologetic' tonlamayla ve çevirisiyle 'Turkish' dilinde olan karşılık metni oluşturup bu yeni draft taslağı hazır olarak kaydet.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "read_latest_email",
+        "description": "Scans and reads the latest email satisfying specific criteria.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "filter_keyword": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "filter_keyword",
+            "language"
+          ]
+        }
+      },
+      {
+        "name": "generate_email_reply_draft",
+        "description": "Uses sentiment modifications to propose an email reply text.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "tone": {
+              "type": "string"
+            },
+            "target_language": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "tone",
+            "target_language"
+          ]
+        }
+      },
+      {
+        "name": "save_draft",
+        "description": "Persists generated email text into the user's Drafts folder.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "block_sender",
+        "description": "Adds the email sender to the blocked list.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sender_email": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "sender_email"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"read_latest_email\", \"arguments\": {\"filter_keyword\": \"complaint\", \"language\": \"English\"}}, {\"name\": \"generate_email_reply_draft\", \"arguments\": {\"tone\": \"professional and apologetic\", \"target_language\": \"Turkish\"}}, {\"name\": \"save_draft\", \"arguments\": {}}]}"
+  },
+  {
+    "query": "Elektrikli aracımla İstanbul'dan Bolu'ya seyahat etmek için evde menzil hesaplamalı bir rota tespit et. 'calculated EV route' seyahat rotasina istasyon durakları ekle ve bu mola kafelerinden araba için 2 adet 'filter coffee' siparişini menü üzerinden önceden sepete ver.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "calculate_ev_route",
+        "description": "Plots an EV-friendly map route integrating distance constraint checks.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "start_point": {
+              "type": "string"
+            },
+            "end_point": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start_point",
+            "end_point"
+          ]
+        }
+      },
+      {
+        "name": "add_charging_stops",
+        "description": "Appends required power charging pinpoints throughout an inputted route.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "route_plan": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "route_plan"
+          ]
+        }
+      },
+      {
+        "name": "preorder_coffee_at_stops",
+        "description": "Issues an upfront food or beverage order scheduled at specific POIs.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "item_name": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "item_name",
+            "quantity"
+          ]
+        }
+      },
+      {
+        "name": "get_battery_level",
+        "description": "Pings the vehicle to retrieve the current battery SOC percentage.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"calculate_ev_route\", \"arguments\": {\"start_point\": \"İstanbul\", \"end_point\": \"Bolu\"}}, {\"name\": \"add_charging_stops\", \"arguments\": {\"route_plan\": \"calculated EV route\"}}, {\"name\": \"preorder_coffee_at_stops\", \"arguments\": {\"item_name\": \"filter coffee\", \"quantity\": 2}}]}"
+  },
+  {
+    "query": "'design team' ekibi üyelerine; 'Logo Color Selection' başlıklı 'Kırmızı', 'Mavi' ve 'Sarı' renklerini barındıran anonim oylama anketi oluştur. Kapandıktan sonra 'survey winner' durumunu kullarak 'brand palette' belgesine işle ve otomatik yükleme tetikleyicisiyle dosyayı 'shared drive' ortamına yayınla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "create_survey",
+        "description": "Builds and distributes a targeted multiple-choice question poll.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_audience": {
+              "type": "string"
+            },
+            "question": {
+              "type": "string"
+            },
+            "options_list": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "target_audience",
+            "question",
+            "options_list"
+          ]
+        }
+      },
+      {
+        "name": "set_auto_upload_trigger",
+        "description": "Schedules a trigger to perform a workflow output merging to a designated location upon conclusion.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "data_source": {
+              "type": "string"
+            },
+            "merge_target_file": {
+              "type": "string"
+            },
+            "publish_destination": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "data_source",
+            "merge_target_file",
+            "publish_destination"
+          ]
+        }
+      },
+      {
+        "name": "close_survey",
+        "description": "Terminates an active poll to prevent further submissions.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "survey_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "survey_id"
+          ]
+        }
+      },
+      {
+        "name": "read_survey_results",
+        "description": "Displays the outcome or vote tally of a poll.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "survey_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "survey_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"create_survey\", \"arguments\": {\"target_audience\": \"design team\", \"question\": \"Logo Color Selection\", \"options_list\": [\"Kırmızı\", \"Mavi\", \"Sarı\"]}}, {\"name\": \"set_auto_upload_trigger\", \"arguments\": {\"data_source\": \"survey winner\", \"merge_target_file\": \"brand palette\", \"publish_destination\": \"shared drive\"}}]}"
+  },
+  {
+    "query": "Evimdeki pencereler için IKEA veritabanından 'İskandinav Ahşap' perdeleri getir; bulduğun perdeler için evin güneş açısını hesaba katarak uygunluk puanı hesapla ve asistan ekranına PDF formatında 'curtain suitability score' içeriğiyle yazdır.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "search_curtains",
+        "description": "Searches for curtains by brand and specific interior style.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "style": {
+              "type": "string"
+            },
+            "brand": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "style",
+            "brand"
+          ]
+        }
+      },
+      {
+        "name": "calculate_sunlight_suitability",
+        "description": "Calculates curtain effectiveness based on house sunlight angles.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "curtain_material": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "curtain_material"
+          ]
+        }
+      },
+      {
+        "name": "render_ui_pdf",
+        "description": "Renders system outputs directly into a PDF report shown on screen.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "document_content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "document_content"
+          ]
+        }
+      },
+      {
+        "name": "book_interior_designer",
+        "description": "Schedules an appointment with an IKEA interior designer.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"search_curtains\", \"arguments\": {\"style\": \"İskandinav Ahşap\", \"brand\": \"IKEA\"}}, {\"name\": \"calculate_sunlight_suitability\", \"arguments\": {\"curtain_material\": \"İskandinav Ahşap\"}}, {\"name\": \"render_ui_pdf\", \"arguments\": {\"document_content\": \"curtain suitability score\"}}]}"
+  },
+  {
+    "query": "Hızlı market uygulamasından kuryemin canlı konumunu haritada gösteren arka plan takibini başlat; kurye eve yaklaşarak 'doorbell_camera' algısına girdiğinde cihazıma bildirim gelsin.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "start_courier_tracking",
+        "description": "Initializes live location tracking for an ongoing delivery order.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "set_proximity_trigger",
+        "description": "Fires an actionable event when a tracked entity breaches a distance threshold.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "distance_threshold": {
+              "type": "integer"
+            },
+            "action_target": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "distance_threshold",
+            "action_target"
+          ]
+        }
+      },
+      {
+        "name": "enable_doorbell_camera",
+        "description": "Activates the front doorbell camera display on the user device.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "call_courier",
+        "description": "Calls the delivery driver.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"start_courier_tracking\", \"arguments\": {}}, {\"name\": \"set_proximity_trigger\", \"arguments\": {\"distance_threshold\": 500, \"action_target\": \"doorbell_camera\"}}]}"
+  },
+  {
+    "query": "Kyoto'daki 'Ryokan Kinosaki' otelinin iletişim servisine bağlanıp, 'Japanese' dilinde sesli olarak '2 person traditional room' tutulmasını sağla. İşlem başarılı olduğunda rezervasyon metnini 'English' çevirisine dönüştürüp, doğrudan 'my email' alıcısına gönder.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "call_hotel_service",
+        "description": "Places an automated call to a lodging establishment using AI voice.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "hotel_name": {
+              "type": "string"
+            },
+            "spoken_language": {
+              "type": "string"
+            },
+            "request_details": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "hotel_name",
+            "spoken_language",
+            "request_details"
+          ]
+        }
+      },
+      {
+        "name": "translate_booking_document",
+        "description": "Translates hotel booking confirmation texts.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_language": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_language"
+          ]
+        }
+      },
+      {
+        "name": "forward_email",
+        "description": "Forwards a documented result to a specified user email address.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "destination_email": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "destination_email"
+          ]
+        }
+      },
+      {
+        "name": "cancel_hotel_booking",
+        "description": "Cancels an existing hotel room request.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "booking_reference": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "booking_reference"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"call_hotel_service\", \"arguments\": {\"hotel_name\": \"Ryokan Kinosaki\", \"spoken_language\": \"Japanese\", \"request_details\": \"2 person traditional room\"}}, {\"name\": \"translate_booking_document\", \"arguments\": {\"target_language\": \"English\"}}, {\"name\": \"forward_email\", \"arguments\": {\"destination_email\": \"my email\"}}]}"
+  },
+  {
+    "query": "Fotoğrafçılık forumunda sadece 'last 1 month' süresinde 'Gece Çekimi' başlığı açan üyeleri tarat. Bulunanlara 'filtered Sony A7 users' filtresini uygulayıp onlara doğrudan ortak fotoğraf gezisi teklifi barındıran arkadaşlık isteği gönder.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "search_forum_users",
+        "description": "Scrapes a forum for members creating specific thematic topics.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "topic": {
+              "type": "string"
+            },
+            "timeframe": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "topic",
+            "timeframe"
+          ]
+        }
+      },
+      {
+        "name": "filter_users_by_equipment",
+        "description": "Filters a pool of forum users based on camera equipment signatures.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "camera_model": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "camera_model"
+          ]
+        }
+      },
+      {
+        "name": "send_friend_request",
+        "description": "Transmits social connection requests incorporating a custom welcome note.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_audience": {
+              "type": "string"
+            },
+            "message_template": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_audience",
+            "message_template"
+          ]
+        }
+      },
+      {
+        "name": "block_forum_user",
+        "description": "Blocks a specific user from interacting safely with the profile.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "user_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"search_forum_users\", \"arguments\": {\"topic\": \"Gece Çekimi\", \"timeframe\": \"last 1 month\"}}, {\"name\": \"filter_users_by_equipment\", \"arguments\": {\"camera_model\": \"Sony A7\"}}, {\"name\": \"send_friend_request\", \"arguments\": {\"target_audience\": \"filtered Sony A7 users\", \"message_template\": \"ortak fotoğraf gezisi teklifi\"}}]}"
+  },
+  {
+    "query": "Bugün eve gelecek 5 kişilik misafir grubum için 'Fırında Somon' yemeğinin tarif menüsünü bul, yemek malzemelerini doğrudan tam 5 kişiye yetecek şekilde oranlayıp hesapla ve elimde eksik olan tahmini ürünleri süpermarket uygulaması üzerinden anında '1 hour' teslimat siparişi ver.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "get_recipe",
+        "description": "Gets an online recipe card containing ingredients and cooking time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipe_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipe_name"
+          ]
+        }
+      },
+      {
+        "name": "scale_ingredients",
+        "description": "Optimizes ingredient proportions upward or downward regarding passenger headcount.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipe_name": {
+              "type": "string"
+            },
+            "portions": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "recipe_name",
+            "portions"
+          ]
+        }
+      },
+      {
+        "name": "order_groceries",
+        "description": "Purchases required lacking items via the linked rapid grocery framework.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "delivery_speed": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "delivery_speed"
+          ]
+        }
+      },
+      {
+        "name": "save_recipe_to_favorites",
+        "description": "Bookmarks the recipe locally.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipe_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipe_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"get_recipe\", \"arguments\": {\"recipe_name\": \"Fırında Somon\"}}, {\"name\": \"scale_ingredients\", \"arguments\": {\"recipe_name\": \"Fırında Somon\", \"portions\": 5}}, {\"name\": \"order_groceries\", \"arguments\": {\"delivery_speed\": \"1 hour\"}}]}"
+  },
+  {
+    "query": "Robot süpürgenin uygulamasını açarak evin sadece 'Koridor' ve 'Mutfak' tanımlı harita bölgelerini sırasıyla ikişer defa üzerinden geçerek temizlemesi için program komutu ver. Temizlik devriyesi tamamen bittiğinde ise 'toz haznesi durumu' mesaj formatında bana ilet.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "program_vacuum_zones",
+        "description": "Sends zonal routing requests detailing multiple passing iterations.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "zones": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "passes": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "zones",
+            "passes"
+          ]
+        }
+      },
+      {
+        "name": "check_dustbin_status",
+        "description": "Probes the robot API determining if dust collection has hit maximum capacity.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "send_app_notification",
+        "description": "Triggers local OS notification regarding an appliance state.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "message"
+          ]
+        }
+      },
+      {
+        "name": "return_to_dock",
+        "description": "Signals the appliance to end and park at base station.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"program_vacuum_zones\", \"arguments\": {\"zones\": [\"Koridor\", \"Mutfak\"], \"passes\": 2}}, {\"name\": \"check_dustbin_status\", \"arguments\": {}}, {\"name\": \"send_app_notification\", \"arguments\": {\"message\": \"toz haznesi durumu\"}}]}"
+  },
+  {
+    "query": "Geçen haftaki tatil fişlerini içeren otopark, yemek ve benzin ödemelerini harcama bölüştürme sistemine toplu olarak yükle. Toplamda harcamaya katılan 4 kişi olduğumuzu sisteme belirterek kişi başı tam olarak ne kadar düştüğünü hesapla ve bana nakit borçlu olan arkadaşlarıma sistemin WhatsApp ödeme linki kanalını yolla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "upload_receipts",
+        "description": "Uploads and OCR-scans invoice papers matching certain domains.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "categories": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "categories"
+          ]
+        }
+      },
+      {
+        "name": "split_expenses",
+        "description": "Divides total net aggregates among given number of participants.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "people_count": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "people_count"
+          ]
+        }
+      },
+      {
+        "name": "send_payment_links",
+        "description": "Constructs direct charge URL links through designated messenger APIs.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "platform"
+          ]
+        }
+      },
+      {
+        "name": "delete_expense_record",
+        "description": "Deletes incorrectly uploaded receipt entities.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "receipt_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "receipt_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"upload_receipts\", \"arguments\": {\"categories\": [\"otopark\", \"yemek\", \"benzin\"]}}, {\"name\": \"split_expenses\", \"arguments\": {\"people_count\": 4}}, {\"name\": \"send_payment_links\", \"arguments\": {\"platform\": \"WhatsApp\"}}]}"
+  },
+  {
+    "query": "Dijital cüzdanımda duran tüm nakit boş bakiye toplamını ('all available balance') anlık piyasa kuru üzerinden dolara (USD) çevir. Döviz dönüşümü başarılı sağlandıktan hemen sonra bu dolarları yurt dışındaki yüksek lisans okul harcımı ödemek üzere tanımlı 'EduPay' altyapısına transfer et.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "check_wallet_balance",
+        "description": "Checks the available floating cash reserve inside the virtual e-wallet.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "convert_currency",
+        "description": "Executes immediate market FX conversion utilizing whole cash volumes.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "target_currency": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "target_currency",
+            "amount"
+          ]
+        }
+      },
+      {
+        "name": "transfer_to_institution",
+        "description": "Fires domestic or international wires specifically bound for verified enterprise pay portals.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "institution": {
+              "type": "string"
+            },
+            "currency": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "institution",
+            "currency"
+          ]
+        }
+      },
+      {
+        "name": "cancel_transaction",
+        "description": "Cancels an ongoing bank transaction order.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "transaction_number": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "transaction_number"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"check_wallet_balance\", \"arguments\": {}}, {\"name\": \"convert_currency\", \"arguments\": {\"target_currency\": \"USD\", \"amount\": \"all available balance\"}}, {\"name\": \"transfer_to_institution\", \"arguments\": {\"institution\": \"EduPay\", \"currency\": \"USD\"}}]}"
+  },
+  {
+    "query": "Spotify müzik kütüphanemde son '6 months' süreside dinlemediğim klasikleri özel olarak tespit et. Ardından parçaları ('forgotten favorites') 'Nostalji' klasörüne, gizli (private) bir çalma listemizde derleyecek aksiyon al ve uçuşum için çevrimdışı indirecek eylemi gönder.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "identify_forgotten_favorites",
+        "description": "Matches historically highly played audio tracks currently unused beyond specified timeframe boundaries.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "idle_timeframe": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "idle_timeframe"
+          ]
+        }
+      },
+      {
+        "name": "create_playlist",
+        "description": "Gathers designated track blobs cementing them into designated visible lists.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "visibility": {
+              "type": "string"
+            },
+            "tracks": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "visibility",
+            "tracks"
+          ]
+        }
+      },
+      {
+        "name": "download_playlist_offline",
+        "description": "Downloads songs of an album saving them entirely without data dependency.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "playlist_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "playlist_name"
+          ]
+        }
+      },
+      {
+        "name": "delete_playlist",
+        "description": "Deletes a specified playlist permanently.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "playlist_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "playlist_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"identify_forgotten_favorites\", \"arguments\": {\"idle_timeframe\": \"6 months\"}}, {\"name\": \"create_playlist\", \"arguments\": {\"name\": \"Nostalji\", \"visibility\": \"private\", \"tracks\": \"forgotten favorites\"}}, {\"name\": \"download_playlist_offline\", \"arguments\": {\"playlist_name\": \"Nostalji\"}}]}"
+  },
+  {
+    "query": "Spor kulübü aboneliğim üzerinden 'tomorrow' tarihinde gerçekleşecek olan saat 18:00'daki 'Grup Pilates' dersine olan mevcut sınıf katılımımı iptal et. Derhal sıramı boşalt ki bekleyen ilk kişi alınsın; akabinde bana 'next Tuesday' (haftaya salı günü) aynı branştaki ders için yeni bir müsaitlik randevusu bak.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "cancel_class_attendance",
+        "description": "Forfeits class seating assignments scheduled for members.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "class_name": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "class_name",
+            "date",
+            "time"
+          ]
+        }
+      },
+      {
+        "name": "promote_waitlist",
+        "description": "Pushes pending gym members automatically covering dropped roster slots.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      },
+      {
+        "name": "search_class_availability",
+        "description": "Looks up matching fitness instructor availability tables targeting identical programs going forward.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "class_name": {
+              "type": "string"
+            },
+            "target_day": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "class_name",
+            "target_day"
+          ]
+        }
+      },
+      {
+        "name": "book_gym_class",
+        "description": "Reserves an open spot for a gym class.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "class_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "class_id"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"cancel_class_attendance\", \"arguments\": {\"class_name\": \"Grup Pilates\", \"date\": \"tomorrow\", \"time\": \"18:00\"}}, {\"name\": \"promote_waitlist\", \"arguments\": {}}, {\"name\": \"search_class_availability\", \"arguments\": {\"class_name\": \"Grup Pilates\", \"target_day\": \"next Tuesday\"}}]}"
+  },
+  {
+    "query": "'solar panels' sistemindeki bataryaların şu anki genel şarj seviyesini kontrol et. Ardından şebekede biriken fazla enerjiyi 'home grid' üzerinden satışa aç ve 'electricity surplus' indirim tipini ekleyerek, 'account billing' idaresine 'surplus electricity sold applies discount' mesaj gönderim bildirimini yap.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "check_battery_level",
+        "description": "Reads the current charge level of energy storage systems.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "device_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "device_type"
+          ]
+        }
+      },
+      {
+        "name": "sell_excess_electricity",
+        "description": "Executes selling of surplus green energy back to the grid.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "account": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "account"
+          ]
+        }
+      },
+      {
+        "name": "apply_invoice_discount",
+        "description": "Credits an amount towards the next utility bill cycle.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "discount_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "discount_type"
+          ]
+        }
+      },
+      {
+        "name": "notify_finance",
+        "description": "Pushes an operations log to the billing or finance provider.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "department": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "department",
+            "message"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"check_battery_level\", \"arguments\": {\"device_type\": \"solar panels\"}}, {\"name\": \"sell_excess_electricity\", \"arguments\": {\"account\": \"home grid\"}}, {\"name\": \"apply_invoice_discount\", \"arguments\": {\"discount_type\": \"electricity surplus\"}}, {\"name\": \"notify_finance\", \"arguments\": {\"department\": \"account billing\", \"message\": \"surplus electricity sold applies discount\"}}]}"
+  },
+  {
+    "query": "Spor kulübüne tam giriş yapmadan önce, telefonumu otomatik olarak 'Odak' (Focus) moduna al, 'smart watch' üzerinden spor salonu kalp ritmi senkronizasyonu başlat ve 'gym turnstile' konumuna yetkili erişim giriş QR kodunu getir.",
+    "order_matters": false,
+    "tools": [
+      {
+        "name": "enable_focus_mode",
+        "description": "Activates Do Not Disturb or Focus states on mobile hardware.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mode_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "mode_name"
+          ]
+        }
+      },
+      {
+        "name": "start_continuous_heart_sync",
+        "description": "Starts streaming biometric metrics from wearable to linked gym equipment.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "device_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "device_type"
+          ]
+        }
+      },
+      {
+        "name": "generate_access_qr",
+        "description": "Generates a localized access token barcode for turnstiles.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "location_type"
+          ]
+        }
+      },
+      {
+        "name": "lock_screen",
+        "description": "Forces the device screen to turn off and lock.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"enable_focus_mode\", \"arguments\": {\"mode_name\": \"Focus\"}}, {\"name\": \"start_continuous_heart_sync\", \"arguments\": {\"device_type\": \"smart watch\"}}, {\"name\": \"generate_access_qr\", \"arguments\": {\"location_type\": \"gym turnstile\"}}]}"
+  },
+  {
+    "query": "Buzdolabının 'inside fridge' kamerasından ortam fotoğrafı çek ve 'fridge camera' kaynağı aracına incelet. İçerideki tüm ('analyzed fridge contents') ürünleri çıkartıp bana vegan yemek ('recipe suggestion') tarifi oluştur, bunu 'mobile phone' kısa mesajla yolla.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "capture_fridge_image",
+        "description": "Fires a snapshot from internal appliance diagnostic cameras.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "camera_location": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "camera_location"
+          ]
+        }
+      },
+      {
+        "name": "analyze_ingredients",
+        "description": "Scans food supply imagery yielding an array of edible components.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "image_source": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "image_source"
+          ]
+        }
+      },
+      {
+        "name": "suggest_recipe",
+        "description": "Generates culinary instructions bounded by dietary limitations.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "diet_type": {
+              "type": "string"
+            },
+            "input_ingredients": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "diet_type",
+            "input_ingredients"
+          ]
+        }
+      },
+      {
+        "name": "send_message",
+        "description": "Dispatches text alerts to phone destinations.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipient": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipient",
+            "content"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"capture_fridge_image\", \"arguments\": {\"camera_location\": \"inside fridge\"}}, {\"name\": \"analyze_ingredients\", \"arguments\": {\"image_source\": \"fridge camera\"}}, {\"name\": \"suggest_recipe\", \"arguments\": {\"diet_type\": \"vegan\", \"input_ingredients\": \"analyzed fridge contents\"}}, {\"name\": \"send_message\", \"arguments\": {\"recipient\": \"mobile phone\", \"content\": \"recipe suggestion\"}}]}"
+  },
+  {
+    "query": "Hava muhalefetini dikkate alarak 'tomorrow morning' olan uçuşumu uygulasından iptal et, hemen 'afternoon' sefere olan hızlı treni bul, 'Business' sınıfından satın al. Ek olarak ayarladığım 'airport shuttle' transfer hizmet aracını tamamen kaldır.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "cancel_flight",
+        "description": "Aborts and refunds a registered airline boarding pass.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "flight_date": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "flight_date"
+          ]
+        }
+      },
+      {
+        "name": "search_trains",
+        "description": "Searches locomotive networks for specific temporal windows.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "time_preference": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "date",
+            "time_preference"
+          ]
+        }
+      },
+      {
+        "name": "book_train",
+        "description": "Reserves high speed railway seats.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ticket_class": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ticket_class"
+          ]
+        }
+      },
+      {
+        "name": "cancel_transfer",
+        "description": "Cancels hired shuttle or limousine ground carriage operations.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "transfer_type": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "transfer_type"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"cancel_flight\", \"arguments\": {\"flight_date\": \"tomorrow morning\"}}, {\"name\": \"search_trains\", \"arguments\": {\"date\": \"2026-04-14\", \"time_preference\": \"afternoon\"}}, {\"name\": \"book_train\", \"arguments\": {\"ticket_class\": \"Business\"}}, {\"name\": \"cancel_transfer\", \"arguments\": {\"transfer_type\": \"airport shuttle\"}}]}"
+  },
+  {
+    "query": "Paylaşılan belgeler içerisinden 'weekly meeting notes' belge adındaki dosyanın özetini çıkar. Bu ürettiğin metni ('meeting summary') ortak Notion veritabanında ('Marketing') yeni bir sayfa (page) olarak işle, hem de 'managers' grubundakilere 'formal' bir e-posta bülteni ilet.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "extract_document_summary",
+        "description": "Opens a given text source generating a succinct wrap-up.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "document_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "document_name"
+          ]
+        }
+      },
+      {
+        "name": "create_notion_page",
+        "description": "Fires API hooks integrating new nodes directly into Notion structures.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "database": {
+              "type": "string"
+            },
+            "content": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "database",
+            "content"
+          ]
+        }
+      },
+      {
+        "name": "send_newsletter_email",
+        "description": "Blasts formatted HTML digests leveraging predefined audience tags.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recipients_group": {
+              "type": "string"
+            },
+            "tone": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "recipients_group",
+            "tone"
+          ]
+        }
+      },
+      {
+        "name": "archive_document",
+        "description": "Archives a specific document to a designated secure sub-folder.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "document_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "document_name"
+          ]
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"extract_document_summary\", \"arguments\": {\"document_name\": \"weekly meeting notes\"}}, {\"name\": \"create_notion_page\", \"arguments\": {\"database\": \"Marketing\", \"content\": \"meeting summary\"}}, {\"name\": \"send_newsletter_email\", \"arguments\": {\"recipients_group\": \"managers\", \"tone\": \"formal\"}}]}"
+  },
+  {
+    "query": "Arabanın merkez sistemine erişerek 'home' (evime) coğrafi uzaklık ayarı (Geofence) yap. Ekleyerek arabanın menzilinde 'heating system' 24 derece 'set to 24 degrees' isitsin ve yakınlaşınca 'garage door' aletini 'open' emriyle açtırsın.",
+    "order_matters": true,
+    "tools": [
+      {
+        "name": "create_geofence_trigger",
+        "description": "Establishes an invisible digital perimeter bounded radially around coordinates.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string"
+            },
+            "radius_km": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "location",
+            "radius_km"
+          ]
+        }
+      },
+      {
+        "name": "add_geofence_action",
+        "description": "Binds specific smart IoT routine commands onto an existing Geofence border.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "device": {
+              "type": "string"
+            },
+            "operation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "device",
+            "operation"
+          ]
+        }
+      },
+      {
+        "name": "remove_geofence_trigger",
+        "description": "Removes an active geofence location trigger.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "location"
+          ]
+        }
+      },
+      {
+        "name": "get_current_location",
+        "description": "Acquires raw live GPS tracking telemetry.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        }
+      }
+    ],
+    "answer": "{\"tool_calls\": [{\"name\": \"create_geofence_trigger\", \"arguments\": {\"location\": \"home\", \"radius_km\": 1.0}}, {\"name\": \"add_geofence_action\", \"arguments\": {\"device\": \"heating system\", \"operation\": \"set to 24 degrees\"}}, {\"name\": \"add_geofence_action\", \"arguments\": {\"device\": \"garage door\", \"operation\": \"open\"}}]}"
+  }
+]
