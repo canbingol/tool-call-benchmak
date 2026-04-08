@@ -87,10 +87,14 @@ def multi_tool_bench(data, model, parser, model_name, limit):
             
             else:
                 if len(model_tool_call) > 0:
+
+                    tool_len = min(len(model_tool_call), len(gold))
                     in_name_acc = 0.0
                     in_args_acc = 0.0
 
                     for i,tool in enumerate(model_tool_call):
+                        if i >= tool_len:
+                            break
                         if tool["name"] == gold[i]["name"]:
                             in_name_acc += 1
                         if tool["arguments"] == gold[i]["arguments"]:
