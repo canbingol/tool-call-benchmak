@@ -1,5 +1,5 @@
 from argparse import ArgumentParser
-
+from datetime import datetime
 from models.hf_model import Model
 from data import Data
 from parsers.custom_parser import spep_parser, qwen2_5_parser
@@ -24,6 +24,8 @@ pars = args.parser
 PARSER = spep_parser if pars == "spep" else qwen2_5_parser
 SIMPLE_DATASET_ID = "./eval_data/simple_tool_call.json"
 MULTI_DATASET_ID = "./eval_data/multi_tool_call.json"
+run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+
 
 model = Model(model_id=MODEL_ID)
 
@@ -35,9 +37,7 @@ multi_data.apply_chat_template_all()
 
 model_name = MODEL_ID.split("/")[-1]
 
-
-
-simple_exact_match, tool_name_accuracy, argument_accuracy = simple_tool_bench(simple_data, model, PARSER, model_name, limit)
+simple_exact_match, tool_name_accuracy, argument_accuracy = simple_tool_bench(simple_data, model, PARSER, model_name, limit, run_id)
 
 print(f"| TOOL CALL BENCHMARK | {model_name} | data size: {limit} |")
 print("---" * 30)
@@ -46,7 +46,7 @@ print("---" * 30)
 print(f"| Exact Match: {simple_exact_match:.4f} | Tool Name Accuracy: {tool_name_accuracy:.4f} | Argument Accuracy: {argument_accuracy:.4f} |")
 print("---" * 30)
 
-multi_exact_match, multi_tool_name_accuracy, multi_argument_accuracy = multi_tool_bench(multi_data, model, PARSER, model_name, limit)
+multi_exact_match, multi_tool_name_accuracy, multi_argument_accuracy = multi_tool_bench(multi_data, model, PARSER, model_name, limit, run_id)
 print(f"| MULTI TOOL CALL | Exact Match | Tool Name Accuracy | Argument Accuracy |")
 print("---" * 30)
 print(f"| Exact Match: {multi_exact_match:.4f} | Tool Name Accuracy: {multi_tool_name_accuracy:.4f} | Argument Accuracy: {multi_argument_accuracy:.4f} |")
