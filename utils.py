@@ -95,9 +95,13 @@ def multi_tool_bench(data, model, parser, model_name, limit):
                     for i,tool in enumerate(model_tool_call):
                         if i >= tool_len:
                             break
-                        if tool["name"] == gold[i]["name"]:
+
+                        tool_name = tool.get("name", "")
+                        tool_args = tool.get("arguments", {})   
+
+                        if tool_name == gold[i].get("name"):
                             in_name_acc += 1
-                        if tool["arguments"] == gold[i]["arguments"]:
+                        if tool_args == gold[i].get("arguments"):
                             in_args_acc += 1
 
                     tool_name_accuracy += in_name_acc / len(tool)                  
@@ -122,12 +126,13 @@ def multi_tool_bench(data, model, parser, model_name, limit):
                     gold_args = [item["arguments"] for item in gold]
 
                     for tool in model_tool_call:
-                        name = tool["name"]
-                        arguments = tool["arguments"]
+                        name = tool.get("name", "")
+                        arguments = tool.get("arguments", {})
 
-                        if name in gold_names:
+
+                        if name and name in gold_names:
                             in_name_acc += 1
-                        if arguments in gold_args:
+                        if arguments and arguments in gold_args:
                             in_args_acc += 1
                     
 
