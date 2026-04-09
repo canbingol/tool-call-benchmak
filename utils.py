@@ -37,7 +37,7 @@ def write2file(
 
 def simple_tool_bench(data, model, parser, model_name, limit, run_id):
     exact_match = 0.0
-    tool_accuracy = 0.0
+    
     print(f"Running simple tool call benchmark for {model_name} with data size {limit}...")
     for data_item, gold in tqdm(zip(data.formatted_data, data.golds), total=len(data.formatted_data)):
 
@@ -46,7 +46,6 @@ def simple_tool_bench(data, model, parser, model_name, limit, run_id):
         
         if tool_call == gold:
             exact_match += 1
-            tool_accuracy += 1
 
         write2file(bench_type="simple", golds=gold, predictions=tool_call, raw_answer=model_answer,
                model_name=model_name, data_size=limit, run_id=run_id)

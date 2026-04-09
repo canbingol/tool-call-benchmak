@@ -37,16 +37,14 @@ multi_data.apply_chat_template_all()
 
 model_name = MODEL_ID.split("/")[-1]
 
-simple_exact_match, tool_name_accuracy, argument_accuracy = simple_tool_bench(simple_data, model, PARSER, model_name, limit, run_id)
+simple_exact_match = simple_tool_bench(simple_data, model, PARSER, model_name, limit, run_id)
 
 print(f"| TOOL CALL BENCHMARK | {model_name} | data size: {limit} |")
 print("---" * 30)
-print(f"| SİMPLE TOOL CALL | Exact Match | Tool Name Accuracy | Argument Accuracy |")
-print("---" * 30)
-print(f"| Exact Match: {simple_exact_match:.4f} | Tool Name Accuracy: {tool_name_accuracy:.4f} | Argument Accuracy: {argument_accuracy:.4f} |")
+print(f"| Exact Match: {simple_exact_match:.4f} |")
 print("---" * 30)
 
-multi_exact_match, multi_tool_name_accuracy, multi_argument_accuracy = multi_tool_bench(multi_data, model, PARSER, model_name, limit, run_id)
-print(f"| MULTI TOOL CALL | Exact Match | Tool Name Accuracy | Argument Accuracy |")
+multi_exact_match, multi_tool_accuracy = multi_tool_bench(multi_data, model, PARSER, model_name, limit, run_id)
+print(f"| MULTI TOOL CALL | Exact Match | Tool Accuracy |")
 print("---" * 30)
-print(f"| Exact Match: {multi_exact_match:.4f} | Tool Name Accuracy: {multi_tool_name_accuracy:.4f} | Argument Accuracy: {multi_argument_accuracy:.4f} |")
+print(f"| Exact Match: {multi_exact_match:.4f} | Tool Accuracy: {multi_tool_accuracy:.4f} |")
